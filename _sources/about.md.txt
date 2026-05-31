@@ -1,6 +1,6 @@
 # About
 
-Hello! I am Mykyta Petrenko, also known as SqueezyPixels. I love symmetry, so I built this add-on for my own character workflow. I used it privately for a while because Blender's native tools do not always give me the results I expect, even on meshes that look symmetrical.
+Hello! I am Mykyta Petrenko (aka SqueezyPixels). I love symmetry, so I built this add-on for my own character workflow. I used it privately for a while because Blender's native tools do not always give me the results I expect, even on meshes that look symmetrical.
 
 Eventually, I polished the tool to a point where I was no longer embarrassed to share it with others.
 
