@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Welcome to OmniMirror Docs! &mdash; OmniMirror 0.0.1 documentation</title>
+        <title>Workflow &mdash; OmniMirror 0.0.1 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
@@ -17,7 +17,8 @@
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
             <link rel="top" title="OmniMirror 0.0.1 documentation" href="#" />
-            <link rel="next" title="About" href="about.html" />
+            <link rel="next" title="Persistent Symmetry Configuration" href="config.html" />
+            <link rel="prev" title="About" href="about.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -61,9 +62,9 @@
 </div><div class="site-toc">
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
 </ul>
 
@@ -84,8 +85,8 @@
                     <div class="col">
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
-        <li class="breadcrumb-item"><a href="#">Docs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Welcome to OmniMirror Docs!</li>
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Workflow</li>
     </ol>
 </nav>
                     </div>
@@ -97,11 +98,11 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/index.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/workflow.md" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
-    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/index.rst.txt" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/workflow.md.txt" rel="nofollow">
         <span class="btn-icon"><span class="fas fa-code"></span></span>
         <span class="btn-text">View source</span>
     </a>
@@ -116,32 +117,25 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="welcome-to-omnimirror-docs">
-<h1>Welcome to OmniMirror Docs!<a class="headerlink" href="#welcome-to-omnimirror-docs" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about.html#how-it-works">How It Works</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#what-you-can-do-with-it">What You Can Do With It</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#limitations">Limitations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config.html#mesh-requirements">Mesh Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html#symmetry-detection">Symmetry Detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html#creating-a-configuration-file">Creating a Configuration File</a></li>
-</ul>
-</li>
-</ul>
-</div>
+    <section id="workflow">
+<h1>Workflow<a class="headerlink" href="#workflow" title="Link to this heading">¶</a></h1>
+<p>A good workflow is:</p>
+<ol class="simple">
+<li><p>Create or obtain a perfectly symmetrical base mesh, for example right after applying the Mirror modifier.</p></li>
+<li><p>Make sure the mesh is clean, symmetrical, and does not contain duplicated vertices.</p></li>
+<li><p>Create the OmniMirror configuration immediately.</p></li>
+<li><p>Edit the mesh.</p></li>
+<li><p>Use that persistent symmetry configuration later to symmetrize anything you need: the base mesh, shape keys, vertex groups, or UV maps.</p></li>
+</ol>
 </section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-right" href="about.html" title="Next">
-        About <span aria-hidden="true">&nbsp;→</span>
+    <a class="float-left" href="about.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>About
+    </a>
+    <a class="float-right" href="config.html" title="Next">
+        Persistent Symmetry Configuration <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>

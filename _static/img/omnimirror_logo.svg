@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">OmniMirror logo</title>
+  <desc id="desc">A mirrored diamond mark for the OmniMirror documentation.</desc>
+  <rect width="96" height="96" rx="18" fill="#111827"/>
+  <path d="M48 14v68" stroke="#60a5fa" stroke-width="4" stroke-linecap="round"/>
+  <path d="M42 24 18 48l24 24V58L32 48l10-10V24Z" fill="#e5e7eb"/>
+  <path d="M54 24v14l10 10-10 10v14l24-24-24-24Z" fill="#e5e7eb"/>
+  <circle cx="48" cy="48" r="7" fill="#60a5fa"/>
+</svg>
+

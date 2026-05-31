@@ -6,18 +6,19 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Welcome to OmniMirror Docs! &mdash; OmniMirror 0.0.1 documentation</title>
+        <title>About &mdash; OmniMirror 0.0.1 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=9683d562" />
-            <link rel="author" title="About these documents" href="about.html" />
+            <link rel="author" title="About these documents" href="#" />
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
             <link rel="top" title="OmniMirror 0.0.1 documentation" href="#" />
-            <link rel="next" title="About" href="about.html" />
+            <link rel="next" title="Workflow" href="workflow.html" />
+            <link rel="prev" title="Welcome to OmniMirror Docs!" href="index.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -61,8 +62,8 @@
 </div><div class="site-toc">
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
 </ul>
@@ -84,8 +85,8 @@
                     <div class="col">
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
-        <li class="breadcrumb-item"><a href="#">Docs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Welcome to OmniMirror Docs!</li>
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">About</li>
     </ol>
 </nav>
                     </div>
@@ -97,11 +98,11 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/index.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/about.md" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
-    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/index.rst.txt" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/about.md.txt" rel="nofollow">
         <span class="btn-icon"><span class="fas fa-code"></span></span>
         <span class="btn-text">View source</span>
     </a>
@@ -116,35 +117,62 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="welcome-to-omnimirror-docs">
-<h1>Welcome to OmniMirror Docs!<a class="headerlink" href="#welcome-to-omnimirror-docs" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about.html#how-it-works">How It Works</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#what-you-can-do-with-it">What You Can Do With It</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#limitations">Limitations</a></li>
+    <section id="about">
+<h1>About<a class="headerlink" href="#about" title="Link to this heading">¶</a></h1>
+<p>Hello! I am Mykyta Petrenko, also known as SqueezyPixels. I love symmetry, so I built this add-on for my own character workflow. I used it privately for a while because Blender’s native tools do not always give me the results I expect, even on meshes that look symmetrical.</p>
+<p>Eventually, I polished the tool to a point where I was no longer embarrassed to share it with others.</p>
+<p>OmniMirror is not trying to replace Blender’s native tools, and I am not going to claim that it is an ultimate must-have. It solves a specific set of problems I kept running into personally.</p>
+<section id="how-it-works">
+<h2>How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h2>
+<p>The add-on relies on a persistent symmetry configuration. Think of it as baking the symmetry information at the right moment, when your mesh is still nearly perfectly symmetrical, such as right after applying the Mirror modifier.</p>
+<p>That configuration stores which vertices belong to the left side, the right side, or the center line. Later, even after you add asymmetrical details, the add-on remembers the original symmetry information. It no longer depends on the current vertex positions. Instead, it refers back to the saved configuration.</p>
+</section>
+<section id="what-you-can-do-with-it">
+<h2>What You Can Do With It<a class="headerlink" href="#what-you-can-do-with-it" title="Link to this heading">¶</a></h2>
+<p>Once the configuration is saved, you can use it to symmetrize:</p>
+<ul class="simple">
+<li><p>Base meshes</p></li>
+<li><p>Shape keys</p></li>
+<li><p>Vertex groups</p></li>
+<li><p>UV maps</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config.html#mesh-requirements">Mesh Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html#symmetry-detection">Symmetry Detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html#creating-a-configuration-file">Creating a Configuration File</a></li>
+<p>All of these operations are based on the original symmetry, not on the messy positions vertices may have drifted to later.</p>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>OmniMirror relies on vertex order, so you cannot change topology after creating the configuration.</p></li>
+<li><p>The configuration should be created on a genuinely symmetrical mesh.</p></li>
+<li><p>The add-on is actively developed, so limitations may change.</p></li>
 </ul>
-</li>
-</ul>
-</div>
+</section>
 </section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-right" href="about.html" title="Next">
-        About <span aria-hidden="true">&nbsp;→</span>
+    <a class="float-left" href="index.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Welcome to OmniMirror Docs!
+    </a>
+    <a class="float-right" href="workflow.html" title="Next">
+        Workflow <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">About</a><ul>
+<li><a class="reference internal" href="#how-it-works">How It Works</a></li>
+<li><a class="reference internal" href="#what-you-can-do-with-it">What You Can Do With It</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
                     
                 </div>
             </div>

@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Welcome to OmniMirror Docs! &mdash; OmniMirror 0.0.1 documentation</title>
+        <title>Persistent Symmetry Configuration &mdash; OmniMirror 0.0.1 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
@@ -17,7 +17,7 @@
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
             <link rel="top" title="OmniMirror 0.0.1 documentation" href="#" />
-            <link rel="next" title="About" href="about.html" />
+            <link rel="prev" title="Workflow" href="workflow.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -61,10 +61,10 @@
 </div><div class="site-toc">
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Persistent Symmetry Configuration</a></li>
 </ul>
 
     </nav>
@@ -84,8 +84,8 @@
                     <div class="col">
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
-        <li class="breadcrumb-item"><a href="#">Docs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Welcome to OmniMirror Docs!</li>
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Persistent Symmetry Configuration</li>
     </ol>
 </nav>
                     </div>
@@ -97,11 +97,11 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/index.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/config.md" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
-    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/index.rst.txt" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/config.md.txt" rel="nofollow">
         <span class="btn-icon"><span class="fas fa-code"></span></span>
         <span class="btn-text">View source</span>
     </a>
@@ -116,35 +116,96 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="welcome-to-omnimirror-docs">
-<h1>Welcome to OmniMirror Docs!<a class="headerlink" href="#welcome-to-omnimirror-docs" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about.html#how-it-works">How It Works</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#what-you-can-do-with-it">What You Can Do With It</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#limitations">Limitations</a></li>
+    <section id="persistent-symmetry-configuration">
+<h1>Persistent Symmetry Configuration<a class="headerlink" href="#persistent-symmetry-configuration" title="Link to this heading">¶</a></h1>
+<p>A <em>persistent symmetry configuration</em> is a saved map that stores the correspondence between vertex indices on the left and right sides of your mesh. It also marks which vertices belong to the center line (the symmetry plane).</p>
+<p>Think of it as baking the symmetry information at the right moment, when your mesh is still perfectly or nearly perfectly symmetrical. Later, after you add asymmetrical details, the add-on can still refer back to this saved configuration.</p>
+<section id="mesh-requirements">
+<h2>Mesh Requirements<a class="headerlink" href="#mesh-requirements" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Good symmetry.</strong> OmniMirror works best when the symmetry configuration is created while the mesh is still genuinely symmetrical. In a typical workflow, this is right after applying a Mirror modifier, before sculpting, posing, or adding any non-symmetrical details.</p></li>
+<li><p><strong>No duplicated vertices.</strong> The mesh should not contain duplicated vertices. If multiple vertices occupy the same or almost the same position, the add-on may not know which one is the correct match.</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config.html#mesh-requirements">Mesh Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html#symmetry-detection">Symmetry Detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html#creating-a-configuration-file">Creating a Configuration File</a></li>
+</section>
+<section id="symmetry-detection">
+<h2>Symmetry Detection<a class="headerlink" href="#symmetry-detection" title="Link to this heading">¶</a></h2>
+<p>The configuration process classifies every vertex in the mesh as one of three types:</p>
+<ul class="simple">
+<li><p>a vertex on the negative side of the symmetry axis;</p></li>
+<li><p>a vertex on the positive side of the symmetry axis;</p></li>
+<li><p>a center vertex lying on the symmetry plane.</p></li>
 </ul>
-</li>
+<p>For the configuration to be valid, every vertex must be classified. If at least one vertex cannot be detected as part of a mirrored pair or as a center vertex, the configuration will not work correctly.</p>
+<p>During later processing, each vertex is handled according to its classification: negative side, positive side, or center plane.</p>
+<section id="symmetrical-vertex-detection-positive-negative-side">
+<h3>Symmetrical Vertex Detection (Positive/Negative Side)<a class="headerlink" href="#symmetrical-vertex-detection-positive-negative-side" title="Link to this heading">¶</a></h3>
+<p>To find symmetrical vertices, OmniMirror takes a vertex from one side of the mesh, mirrors its position across the selected symmetry axis, and searches for the best matching vertex on the opposite side.</p>
+<p>The add-on supports two threshold modes for this detection:</p>
+<ul class="simple">
+<li><p><strong>Absolute threshold</strong> uses a fixed object-space distance. A mirrored vertex must be found within that distance.</p></li>
+<li><p><strong>Relative threshold (recommended)</strong> uses a distance based on the local mesh density. The threshold is calculated from the shortest edge connected to the vertex, which makes detection less sensitive to differences in mesh scale or density.</p></li>
 </ul>
-</div>
+<p>In most cases, you should not need to change the default values if you create the configuration immediately after applying a Mirror modifier.</p>
+</section>
+<section id="center-vertex-detection">
+<h3>Center Vertex Detection<a class="headerlink" href="#center-vertex-detection" title="Link to this heading">¶</a></h3>
+<p>If a vertex does not have a mirrored counterpart, OmniMirror checks whether it is close enough to the symmetry plane. If it is within the center detection threshold, it is marked as a center vertex.</p>
+<p>The add-on supports the same two threshold modes for center detection.</p>
+<p>Center vertices are important because they do not have left/right partners.</p>
+</section>
+<section id="trouble-detection-highly-recommended">
+<h3>Trouble Detection (Highly recommended)<a class="headerlink" href="#trouble-detection-highly-recommended" title="Link to this heading">¶</a></h3>
+<p>OmniMirror includes helper operators for checking whether the configuration can be created correctly:</p>
+<ul class="simple">
+<li><p><strong>Select Center Vertices</strong> selects all vertices detected as belonging to the symmetry plane.</p></li>
+<li><p><strong>Select Unassigned Vertices</strong> selects vertices that could not be clearly classified.</p></li>
+</ul>
+<p>It is highly recommended to run these helper operators before creating a persistent symmetry configuration.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Unassigned</span> <span class="pre">Vertices</span></code> finds anything, the mesh is not ready for a valid configuration yet. You may need to adjust the detection thresholds, clean duplicated vertices, or create the configuration earlier in the workflow while the mesh is still perfectly symmetrical.</p>
+</section>
+</section>
+<section id="creating-a-configuration-file">
+<h2>Creating a Configuration File<a class="headerlink" href="#creating-a-configuration-file" title="Link to this heading">¶</a></h2>
+<p>When you create a symmetry configuration, OmniMirror saves the result as a JSON file. This file stores the symmetry information for the mesh: which vertex indices are paired across the mirror axis, and which vertex indices belong to the center line.</p>
+<section id="topology-and-vertex-order">
+<h3>Topology and Vertex Order<a class="headerlink" href="#topology-and-vertex-order" title="Link to this heading">¶</a></h3>
+<p>✅ The configuration is based on <strong>vertex order</strong>.
+That means the same configuration file can be reused on any model that has the exact same topology and the exact same vertex order. The mesh can have different shape key values, different vertex group weights, different UV positions, or non-symmetrical edits, but the underlying vertex indices must still match.</p>
+<p>❌ If the topology changes, the configuration is no longer reliable. Adding vertices, deleting vertices, merging vertices, splitting edges, remeshing, or doing anything else that changes vertex order can make the saved configuration invalid.</p>
+</section>
+</section>
 </section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-right" href="about.html" title="Next">
-        About <span aria-hidden="true">&nbsp;→</span>
+    <a class="float-left" href="workflow.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Workflow
     </a>
 </nav>
                     </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Persistent Symmetry Configuration</a><ul>
+<li><a class="reference internal" href="#mesh-requirements">Mesh Requirements</a></li>
+<li><a class="reference internal" href="#symmetry-detection">Symmetry Detection</a><ul>
+<li><a class="reference internal" href="#symmetrical-vertex-detection-positive-negative-side">Symmetrical Vertex Detection (Positive/Negative Side)</a></li>
+<li><a class="reference internal" href="#center-vertex-detection">Center Vertex Detection</a></li>
+<li><a class="reference internal" href="#trouble-detection-highly-recommended">Trouble Detection (Highly recommended)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-a-configuration-file">Creating a Configuration File</a><ul>
+<li><a class="reference internal" href="#topology-and-vertex-order">Topology and Vertex Order</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
                     
                 </div>
             </div>
