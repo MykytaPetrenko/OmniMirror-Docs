@@ -21,7 +21,7 @@ theme:
     code: Roboto Mono
 
 nav:
-  - About: about.md
+  - About: index.md
   - Workflow: workflow.md
   - Config: config.md
 
