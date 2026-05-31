@@ -5,6 +5,7 @@ release = "0.0.1"
 
 extensions = [
     "myst_parser",
+    "sphinx_wagtail_theme",
 ]
 
 templates_path = ["_templates"]
@@ -26,4 +27,3 @@ source_suffix = {
     ".rst": "restructuredtext",
     ".md": "markdown",
 }
-
