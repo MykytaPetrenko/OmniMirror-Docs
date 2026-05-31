@@ -1,5 +1,8 @@
 name: Publish Documentation
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -23,9 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install -U sphinx
-        python -m pip install sphinx-wagtail-theme
-        python -m pip install recommonmark
+        python -m pip install -r requirements.txt
 
     - name: Build documentation
       run: |

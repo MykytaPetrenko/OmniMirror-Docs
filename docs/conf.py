@@ -13,8 +13,8 @@ def setup(app):
 # -- Project information -----------------------------------------------------
 
 project = 'OmniMirror Docs'
-copyright = '2026, Sqeezy Pixels (Mykyta Petrenko)'
-author = 'Sqeezy Pixels (Mykyta Petrenko)'
+copyright = '2026, Squeezy Pixels (Mykyta Petrenko)'
+author = 'Squeezy Pixels (Mykyta Petrenko)'
 release = '0.0.1'
 
 # -- General configuration ---------------------------------------------------
