@@ -336,19 +336,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#symmetry-detection-vertex-classification" class="md-nav__link">
+  <a href="#symmetry-detection" class="md-nav__link">
     <span class="md-ellipsis">
-      Symmetry Detection (Vertex Classification)
+      Symmetry Detection
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Symmetry Detection (Vertex Classification)">
+    <nav class="md-nav" aria-label="Symmetry Detection">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#symmetrical-vertex-detection-positive-negative" class="md-nav__link">
+  <a href="#symmetrical-vertex-detection-positivenegative-side" class="md-nav__link">
     <span class="md-ellipsis">
-      Symmetrical Vertex Detection (Positive-Negative)
+      Symmetrical Vertex Detection (Positive/Negative Side)
     </span>
   </a>
   
@@ -364,9 +364,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#debugging-detection-highly-recommended" class="md-nav__link">
+  <a href="#trouble-detection-highly-recommended" class="md-nav__link">
     <span class="md-ellipsis">
-      Debugging Detection (Highly recommended)
+      Trouble Detection (Highly recommended)
     </span>
   </a>
   
@@ -445,19 +445,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#symmetry-detection-vertex-classification" class="md-nav__link">
+  <a href="#symmetry-detection" class="md-nav__link">
     <span class="md-ellipsis">
-      Symmetry Detection (Vertex Classification)
+      Symmetry Detection
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Symmetry Detection (Vertex Classification)">
+    <nav class="md-nav" aria-label="Symmetry Detection">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#symmetrical-vertex-detection-positive-negative" class="md-nav__link">
+  <a href="#symmetrical-vertex-detection-positivenegative-side" class="md-nav__link">
     <span class="md-ellipsis">
-      Symmetrical Vertex Detection (Positive-Negative)
+      Symmetrical Vertex Detection (Positive/Negative Side)
     </span>
   </a>
   
@@ -473,9 +473,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#debugging-detection-highly-recommended" class="md-nav__link">
+  <a href="#trouble-detection-highly-recommended" class="md-nav__link">
     <span class="md-ellipsis">
-      Debugging Detection (Highly recommended)
+      Trouble Detection (Highly recommended)
     </span>
   </a>
   
@@ -530,40 +530,38 @@
 
 <h1 id="persistent-symmetry-configuration">Persistent Symmetry Configuration<a class="headerlink" href="#persistent-symmetry-configuration" title="Permanent link">&para;</a></h1>
 <p>A <em>persistent symmetry configuration</em> is a saved map that stores the correspondence between vertex indices on the left and right sides of your mesh. It also marks which vertices belong to the center line (the symmetry plane).</p>
-<p>Think of it as baking the symmetry information at the right moment — when your mesh is still perfectly or near‑perfectly symmetrical. Later, after you add asymmetrical details, the add-on can still refer back to this saved configuration.</p>
+<p>Think of it as baking the symmetry information at the right moment, when your mesh is still perfectly or nearly perfectly symmetrical. Later, after you add asymmetrical details, the add-on can still refer back to this saved configuration.</p>
 <h2 id="mesh-requirements">Mesh Requirements<a class="headerlink" href="#mesh-requirements" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Good symmetry.</strong> OmniMirror works best when the symmetry configuration is created at the moment when the mesh is still genuinely symmetrical. In a typical workflow, this is right after applying a Mirror modifier, before sculpting, posing, editing shape keys, or adding any non-symmetrical details.</li>
-<li><strong>No vertex duplicates.</strong> The mesh should not contain duplicated vertices. If multiple vertices occupy the same or almost the same position, the add-on may not be able to know which one is the correct match.</li>
+<li><strong>Good symmetry.</strong> OmniMirror works best when the symmetry configuration is created while the mesh is still genuinely symmetrical. In a typical workflow, this is right after applying a Mirror modifier, before sculpting, posing, or adding any non-symmetrical details.</li>
+<li><strong>No duplicated vertices.</strong> The mesh should not contain duplicated vertices. If multiple vertices occupy the same or almost the same position, the add-on may not know which one is the correct match.</li>
 </ul>
-<h2 id="symmetry-detection-vertex-classification">Symmetry Detection (Vertex Classification)<a class="headerlink" href="#symmetry-detection-vertex-classification" title="Permanent link">&para;</a></h2>
-<p>The configuration process classifies every vertex in the mesh as one of three types:</p>
-<ul>
-<li>a vertex on the negative side of the symmetry axis;</li>
-<li>a vertex on the positive side of the symmetry axis;</li>
-<li>a center vertex lying on the symmetry plane.</li>
-</ul>
+<h2 id="symmetry-detection">Symmetry Detection<a class="headerlink" href="#symmetry-detection" title="Permanent link">&para;</a></h2>
+<p>The configuration process classifies every vertex in the mesh as one of three types:
+- a vertex on the negative side of the symmetry axis;
+- a vertex on the positive side of the symmetry axis;
+- a center vertex lying on the symmetry plane.</p>
 <p>For the configuration to be valid, every vertex must be classified. If at least one vertex cannot be detected as part of a mirrored pair or as a center vertex, the configuration will not work correctly.</p>
-<p>During further processing, all vertices will be handled according to their classification - whether they're on the negative half-space, the positive half-space, or lying directly on the center symmetry plane.</p>
-<h3 id="symmetrical-vertex-detection-positive-negative">Symmetrical Vertex Detection (Positive-Negative)<a class="headerlink" href="#symmetrical-vertex-detection-positive-negative" title="Permanent link">&para;</a></h3>
+<p>During later processing, each vertex is handled according to its classification: negative side, positive side, or center plane.</p>
+<h3 id="symmetrical-vertex-detection-positivenegative-side">Symmetrical Vertex Detection (Positive/Negative Side)<a class="headerlink" href="#symmetrical-vertex-detection-positivenegative-side" title="Permanent link">&para;</a></h3>
 <p>To find symmetrical vertices, OmniMirror takes a vertex from one side of the mesh, mirrors its position across the selected symmetry axis, and searches for the best matching vertex on the opposite side.</p>
 <p>The add-on supports two threshold modes for this detection:</p>
 <ul>
 <li><strong>Absolute threshold</strong> uses a fixed object-space distance. A mirrored vertex must be found within that distance.</li>
-<li><strong>Relative threshold (Recommended)</strong> uses a distance based on the local mesh density. The threshold is calculated from the shortest edge connected to the vertex, which makes detection less sensitive to differences in mesh scale or density.</li>
+<li><strong>Relative threshold (recommended)</strong> uses a distance based on the local mesh density. The threshold is calculated from the shortest edge connected to the vertex, which makes detection less sensitive to differences in mesh scale or density.</li>
 </ul>
 <p>In most cases, you should not need to change the default values if you create the configuration immediately after applying a Mirror modifier.</p>
 <h3 id="center-vertex-detection">Center Vertex Detection<a class="headerlink" href="#center-vertex-detection" title="Permanent link">&para;</a></h3>
 <p>If a vertex does not have a mirrored counterpart, OmniMirror checks whether it is close enough to the symmetry plane. If it is within the center detection threshold, it is marked as a center vertex.</p>
-<p>The add-on supports two threshold modes for this detection as well.</p>
+<p>The add-on supports the same two threshold modes for center detection.</p>
 <p>Center vertices are important because they do not have left/right partners.</p>
-<h3 id="debugging-detection-highly-recommended">Debugging Detection (Highly recommended)<a class="headerlink" href="#debugging-detection-highly-recommended" title="Permanent link">&para;</a></h3>
+<h3 id="trouble-detection-highly-recommended">Trouble Detection (Highly recommended)<a class="headerlink" href="#trouble-detection-highly-recommended" title="Permanent link">&para;</a></h3>
 <p>OmniMirror includes helper operators for checking whether the configuration can be created correctly:</p>
 <ul>
 <li><strong>Select Center Vertices</strong> selects all vertices detected as belonging to the symmetry plane.</li>
 <li><strong>Select Unassigned Vertices</strong> selects vertices that could not be clearly classified.</li>
 </ul>
-<p>These helpers are <strong>HIGHLY</strong> recommended to run before creating a persistent symmetry configuration.</p>
+<p>It is highly recommended to run these helper operators before creating a persistent symmetry configuration.</p>
 <p>If <code>Select Unassigned Vertices</code> finds anything, the mesh is not ready for a valid configuration yet. You may need to adjust the detection thresholds, clean duplicated vertices, or create the configuration earlier in the workflow while the mesh is still perfectly symmetrical.</p>
 <h2 id="creating-a-configuration-file">Creating a Configuration File<a class="headerlink" href="#creating-a-configuration-file" title="Permanent link">&para;</a></h2>
 <p>When you create a symmetry configuration, OmniMirror saves the result as a JSON file. This file stores the symmetry information for the mesh: which vertex indices are paired across the mirror axis, and which vertex indices belong to the center line.</p>

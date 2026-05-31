@@ -287,9 +287,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-it-works-short-version-see-the-next-sections-for-more" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
-      How it works (short version. See the next sections for more)
+      How It Works
     </span>
   </a>
   
@@ -298,7 +298,7 @@
         <li class="md-nav__item">
   <a href="#what-you-can-do-with-it" class="md-nav__link">
     <span class="md-ellipsis">
-      What you can do with it
+      What You Can Do With It
     </span>
   </a>
   
@@ -307,7 +307,7 @@
         <li class="md-nav__item">
   <a href="#limitations" class="md-nav__link">
     <span class="md-ellipsis">
-      Limitations:
+      Limitations
     </span>
   </a>
   
@@ -388,9 +388,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-it-works-short-version-see-the-next-sections-for-more" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
-      How it works (short version. See the next sections for more)
+      How It Works
     </span>
   </a>
   
@@ -399,7 +399,7 @@
         <li class="md-nav__item">
   <a href="#what-you-can-do-with-it" class="md-nav__link">
     <span class="md-ellipsis">
-      What you can do with it
+      What You Can Do With It
     </span>
   </a>
   
@@ -408,7 +408,7 @@
         <li class="md-nav__item">
   <a href="#limitations" class="md-nav__link">
     <span class="md-ellipsis">
-      Limitations:
+      Limitations
     </span>
   </a>
   
@@ -436,10 +436,10 @@
 <p>Hello! I’m Mykyta Petrenko (aka SqueezyPixels). I love symmetry, so I built this add-on for my own character workflow. I used it privately for a while because Blender’s native tools… well, they don’t always give the results I expect. Even on meshes that look symmetrical.</p>
 <p>So I polished my tool to a point where I’m not embarrassed to share it with others.</p>
 <p>This isn’t trying to replace Blender’s native tools. And I’m not going to say it’s an ultimate must-have. It just solves a specific set of problems I kept running into personally.</p>
-<h2 id="how-it-works-short-version-see-the-next-sections-for-more">How it works (short version. See the next sections for more)<a class="headerlink" href="#how-it-works-short-version-see-the-next-sections-for-more" title="Permanent link">&para;</a></h2>
-<p>The add-on relies on a persistent symmetry configuration. Think of it like baking the symmetry information at the right moment - when your mesh is still nearly perfectly symmetrical (right after applying the Mirror modifier, for example).</p>
+<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
+<p>The add-on relies on a persistent symmetry configuration. Think of it like baking the symmetry information at the right moment, when your mesh is still nearly perfectly symmetrical, such as right after applying the Mirror modifier.</p>
 <p>That configuration stores which vertices belong to the left side, right side, or center line. Then, even after you add asymmetrical details (because perfect symmetry looks unnatural and falls into uncanny valley territory), the add-on remembers the original symmetry info. It doesn’t care about current vertex positions anymore - it just refers back to that baked configuration.</p>
-<h2 id="what-you-can-do-with-it">What you can do with it<a class="headerlink" href="#what-you-can-do-with-it" title="Permanent link">&para;</a></h2>
+<h2 id="what-you-can-do-with-it">What You Can Do With It<a class="headerlink" href="#what-you-can-do-with-it" title="Permanent link">&para;</a></h2>
 <p>Once the configuration is saved, you can use it to symmetrize:</p>
 <ul>
 <li>Base meshes</li>
@@ -448,11 +448,11 @@
 <li>UV maps</li>
 </ul>
 <p>All based on the original symmetry, not on whatever messy positions vertices have drifted to.</p>
-<h2 id="limitations">Limitations:<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
 <ul>
-<li>This works on vertex order. You can’t change topology after creating the config.</li>
-<li>The config should be created on a genuinely symmetrical mesh.</li>
-<li>I’m actively developing it, so limitations may change — check the Marketplace page for the latest info.</li>
+<li>OmniMirror relies on vertex order, so you cannot change topology after creating the configuration.</li>
+<li>The configuration should be created on a genuinely symmetrical mesh.</li>
+<li>The add-on is actively developed, so limitations may change.</li>
 </ul>
 
 
