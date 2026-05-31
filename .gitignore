@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Sphinx build output
+docs/_build/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
