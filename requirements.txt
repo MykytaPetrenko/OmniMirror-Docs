@@ -1,2 +1,3 @@
-mkdocs==1.6.1
-mkdocs-material==9.5.49
+sphinx==7.4.7
+sphinx-wagtail-theme==6.3.0
+recommonmark==0.7.1

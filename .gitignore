@@ -4,8 +4,8 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 
-# MkDocs build output
-site/
+# Sphinx documentation
+docs/_build/
 
 # OS/editor noise
 .DS_Store
