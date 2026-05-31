@@ -21,9 +21,10 @@ theme:
     code: Roboto Mono
 
 nav:
-  - Home: index.md
   - About: about.md
   - Workflow: workflow.md
+  - Config: config.md
+
 
 markdown_extensions:
   - admonition
