@@ -10,11 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://mykytapetrenko.github.io/OmniMirror-Docs/about/">
+        <link rel="canonical" href="https://mykytapetrenko.github.io/OmniMirror-Docs/config/">
       
       
+        <link rel="prev" href="../workflow/">
       
-        <link rel="next" href="../workflow/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>About - OmniMirror Documentation</title>
+        <title>Config - OmniMirror Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about" class="md-skip">
+        <a href="#persistent-symmetry-configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              About
+              Config
             
           </span>
         </div>
@@ -238,30 +238,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    About
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -270,53 +250,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-it-works-short-version-see-the-next-sections-for-more" class="md-nav__link">
-    <span class="md-ellipsis">
-      How it works (short version. See the next sections for more)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-you-can-do-with-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      What you can do with it
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#limitations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Limitations:
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -345,10 +278,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../config/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -357,6 +310,101 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mesh-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mesh Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symmetry-detection-vertex-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetry Detection (Vertex Classification)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Symmetry Detection (Vertex Classification)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symmetrical-vertex-detection-positive-negative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetrical Vertex Detection (Positive-Negative)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#center-vertex-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Center Vertex Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-detection-highly-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Detection (Highly recommended)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Configuration File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a Configuration File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topology-and-vertex-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topology and Vertex Order
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -388,29 +436,77 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-it-works-short-version-see-the-next-sections-for-more" class="md-nav__link">
+  <a href="#mesh-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      How it works (short version. See the next sections for more)
+      Mesh Requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-you-can-do-with-it" class="md-nav__link">
+  <a href="#symmetry-detection-vertex-classification" class="md-nav__link">
     <span class="md-ellipsis">
-      What you can do with it
+      Symmetry Detection (Vertex Classification)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Symmetry Detection (Vertex Classification)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symmetrical-vertex-detection-positive-negative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetrical Vertex Detection (Positive-Negative)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#limitations" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#center-vertex-detection" class="md-nav__link">
     <span class="md-ellipsis">
-      Limitations:
+      Center Vertex Detection
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-detection-highly-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Detection (Highly recommended)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Configuration File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a Configuration File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topology-and-vertex-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topology and Vertex Order
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -432,28 +528,49 @@
   
 
 
-<h1 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h1>
-<p>Hello! I’m Mykyta Petrenko (aka SqueezyPixels). I love symmetry, so I built this add-on for my own character workflow. I used it privately for a while because Blender’s native tools… well, they don’t always give the results I expect. Even on meshes that look symmetrical.</p>
-<p>So I polished my tool to a point where I’m not embarrassed to share it with others.</p>
-<p>This isn’t trying to replace Blender’s native tools. And I’m not going to say it’s an ultimate must-have. It just solves a specific set of problems I kept running into personally.</p>
-<h2 id="how-it-works-short-version-see-the-next-sections-for-more">How it works (short version. See the next sections for more)<a class="headerlink" href="#how-it-works-short-version-see-the-next-sections-for-more" title="Permanent link">&para;</a></h2>
-<p>The add-on relies on a persistent symmetry configuration. Think of it like baking the symmetry information at the right moment - when your mesh is still nearly perfectly symmetrical (right after applying the Mirror modifier, for example).</p>
-<p>That configuration stores which vertices belong to the left side, right side, or center line. Then, even after you add asymmetrical details (because perfect symmetry looks unnatural and falls into uncanny valley territory), the add-on remembers the original symmetry info. It doesn’t care about current vertex positions anymore - it just refers back to that baked configuration.</p>
-<h2 id="what-you-can-do-with-it">What you can do with it<a class="headerlink" href="#what-you-can-do-with-it" title="Permanent link">&para;</a></h2>
-<p>Once the configuration is saved, you can use it to symmetrize:</p>
+<h1 id="persistent-symmetry-configuration">Persistent Symmetry Configuration<a class="headerlink" href="#persistent-symmetry-configuration" title="Permanent link">&para;</a></h1>
+<p>A <em>persistent symmetry configuration</em> is a saved map that stores the correspondence between vertex indices on the left and right sides of your mesh. It also marks which vertices belong to the center line (the symmetry plane).</p>
+<p>Think of it as baking the symmetry information at the right moment — when your mesh is still perfectly or near‑perfectly symmetrical. Later, after you add asymmetrical details, the add-on can still refer back to this saved configuration.</p>
+<h2 id="mesh-requirements">Mesh Requirements<a class="headerlink" href="#mesh-requirements" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Base meshes</li>
-<li>Shape keys</li>
-<li>Vertex groups</li>
-<li>UV maps</li>
+<li><strong>Good symmetry.</strong> OmniMirror works best when the symmetry configuration is created at the moment when the mesh is still genuinely symmetrical. In a typical workflow, this is right after applying a Mirror modifier, before sculpting, posing, editing shape keys, or adding any non-symmetrical details.</li>
+<li><strong>No vertex duplicates.</strong> The mesh should not contain duplicated vertices. If multiple vertices occupy the same or almost the same position, the add-on may not be able to know which one is the correct match.</li>
 </ul>
-<p>All based on the original symmetry, not on whatever messy positions vertices have drifted to.</p>
-<h2 id="limitations">Limitations:<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
+<h2 id="symmetry-detection-vertex-classification">Symmetry Detection (Vertex Classification)<a class="headerlink" href="#symmetry-detection-vertex-classification" title="Permanent link">&para;</a></h2>
+<p>The configuration process classifies every vertex in the mesh as one of three types:</p>
 <ul>
-<li>This works on vertex order. You can’t change topology after creating the config.</li>
-<li>The config should be created on a genuinely symmetrical mesh.</li>
-<li>I’m actively developing it, so limitations may change — check the Marketplace page for the latest info.</li>
+<li>a vertex on the negative side of the symmetry axis;</li>
+<li>a vertex on the positive side of the symmetry axis;</li>
+<li>a center vertex lying on the symmetry plane.</li>
 </ul>
+<p>For the configuration to be valid, every vertex must be classified. If at least one vertex cannot be detected as part of a mirrored pair or as a center vertex, the configuration will not work correctly.</p>
+<p>During further processing, all vertices will be handled according to their classification - whether they're on the negative half-space, the positive half-space, or lying directly on the center symmetry plane.</p>
+<h3 id="symmetrical-vertex-detection-positive-negative">Symmetrical Vertex Detection (Positive-Negative)<a class="headerlink" href="#symmetrical-vertex-detection-positive-negative" title="Permanent link">&para;</a></h3>
+<p>To find symmetrical vertices, OmniMirror takes a vertex from one side of the mesh, mirrors its position across the selected symmetry axis, and searches for the best matching vertex on the opposite side.</p>
+<p>The add-on supports two threshold modes for this detection:</p>
+<ul>
+<li><strong>Absolute threshold</strong> uses a fixed object-space distance. A mirrored vertex must be found within that distance.</li>
+<li><strong>Relative threshold (Recommended)</strong> uses a distance based on the local mesh density. The threshold is calculated from the shortest edge connected to the vertex, which makes detection less sensitive to differences in mesh scale or density.</li>
+</ul>
+<p>In most cases, you should not need to change the default values if you create the configuration immediately after applying a Mirror modifier.</p>
+<h3 id="center-vertex-detection">Center Vertex Detection<a class="headerlink" href="#center-vertex-detection" title="Permanent link">&para;</a></h3>
+<p>If a vertex does not have a mirrored counterpart, OmniMirror checks whether it is close enough to the symmetry plane. If it is within the center detection threshold, it is marked as a center vertex.</p>
+<p>The add-on supports two threshold modes for this detection as well.</p>
+<p>Center vertices are important because they do not have left/right partners.</p>
+<h3 id="debugging-detection-highly-recommended">Debugging Detection (Highly recommended)<a class="headerlink" href="#debugging-detection-highly-recommended" title="Permanent link">&para;</a></h3>
+<p>OmniMirror includes helper operators for checking whether the configuration can be created correctly:</p>
+<ul>
+<li><strong>Select Center Vertices</strong> selects all vertices detected as belonging to the symmetry plane.</li>
+<li><strong>Select Unassigned Vertices</strong> selects vertices that could not be clearly classified.</li>
+</ul>
+<p>These helpers are <strong>HIGHLY</strong> recommended to run before creating a persistent symmetry configuration.</p>
+<p>If <code>Select Unassigned Vertices</code> finds anything, the mesh is not ready for a valid configuration yet. You may need to adjust the detection thresholds, clean duplicated vertices, or create the configuration earlier in the workflow while the mesh is still perfectly symmetrical.</p>
+<h2 id="creating-a-configuration-file">Creating a Configuration File<a class="headerlink" href="#creating-a-configuration-file" title="Permanent link">&para;</a></h2>
+<p>When you create a symmetry configuration, OmniMirror saves the result as a JSON file. This file stores the symmetry information for the mesh: which vertex indices are paired across the mirror axis, and which vertex indices belong to the center line.</p>
+<h3 id="topology-and-vertex-order">Topology and Vertex Order<a class="headerlink" href="#topology-and-vertex-order" title="Permanent link">&para;</a></h3>
+<p>✅ The configuration is based on <strong>vertex order</strong>. 
+That means the same configuration file can be reused on any model that has the exact same topology and the exact same vertex order. The mesh can have different shape key values, different vertex group weights, different UV positions, or non-symmetrical edits, but the underlying vertex indices must still match.</p>
+<p>❌ If the topology changes, the configuration is no longer reliable. Adding vertices, deleting vertices, merging vertices, splitting edges, remeshing, or doing anything else that changes vertex order can make the saved configuration invalid.</p>
 
 
 
