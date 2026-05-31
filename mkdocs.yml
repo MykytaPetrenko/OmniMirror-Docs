@@ -24,7 +24,6 @@ nav:
   - Home: index.md
   - About: about.md
   - Workflow: workflow.md
-  - Publishing: publishing.md
 
 markdown_extensions:
   - admonition
