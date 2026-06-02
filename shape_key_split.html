@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Basis Mesh Symmetrization &mdash; OmniMirror 0.0.1 documentation</title>
+        <title>Shape Key Split &mdash; OmniMirror 0.0.1 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
@@ -15,8 +15,7 @@
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
             <link rel="top" title="OmniMirror 0.0.1 documentation" href="#" />
-            <link rel="next" title="Shape Key Symmetrization" href="shape_key_symmetrization.html" />
-            <link rel="prev" title="Persistent Symmetry Configuration" href="config.html" />
+            <link rel="prev" title="Shape Key Symmetrization" href="shape_key_symmetrization.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -64,9 +63,9 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Basis Mesh Symmetrization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_symmetrization.html">Shape Key Symmetrization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shape_key_split.html">Shape Key Split</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Shape Key Split</a></li>
 </ul>
 
     </nav>
@@ -87,7 +86,7 @@
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
         <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Basis Mesh Symmetrization</li>
+        <li class="breadcrumb-item active" aria-current="page">Shape Key Split</li>
     </ol>
 </nav>
                     </div>
@@ -99,11 +98,11 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/basis_mesh.md" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/shape_key_split.md" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
-    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/basis_mesh.md.txt" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/shape_key_split.md.txt" rel="nofollow">
         <span class="btn-icon"><span class="fas fa-code"></span></span>
         <span class="btn-text">View source</span>
     </a>
@@ -118,67 +117,64 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="basis-mesh-symmetrization">
-<h1>Basis Mesh Symmetrization<a class="headerlink" href="#basis-mesh-symmetrization" title="Link to this heading">¶</a></h1>
-<p>Basis mesh symmetrization changes the actual vertex coordinates of the active mesh. It uses the selected persistent symmetry configuration to decide which vertices are paired and which vertices belong to the center line.</p>
-<p>Before using this tool, make sure the <strong>Config File</strong> field in the <strong>Persistent Symmetry Config</strong> section points to a valid configuration JSON file. The active mesh must have the same topology and vertex order as the mesh used to create that configuration.</p>
+    <section id="shape-key-split">
+<h1>Shape Key Split<a class="headerlink" href="#shape-key-split" title="Link to this heading">¶</a></h1>
+<p>Shape key splitting creates separate left and right shape keys from a single source shape key.</p>
+<p>This is useful for shapes that were created as one combined deformation, but later need independent side controls. For example, one shape key that moves both ears can be split into two shape keys: one for the left ear and one for the right ear.</p>
+<p>Before using this tool, make sure the <strong>Config File</strong> field in the <strong>Persistent Symmetry Config</strong> section points to a compatible configuration JSON file.</p>
 <section id="where-to-find-it">
 <h2>Where to Find It<a class="headerlink" href="#where-to-find-it" title="Link to this heading">¶</a></h2>
 <p>In Blender, open the 3D View sidebar and go to:</p>
-<p><code class="docutils literal notranslate"><span class="pre">OmniMirror</span> <span class="pre">&gt;</span> <span class="pre">Basis</span> <span class="pre">Mesh</span></code></p>
-<p>The section contains:</p>
-<ul class="simple">
-<li><p><strong>Mode</strong></p></li>
-<li><p><strong>Save Original as Shape Key</strong></p></li>
-<li><p><strong>Symmetrize</strong></p></li>
-</ul>
+<p><code class="docutils literal notranslate"><span class="pre">OmniMirror</span> <span class="pre">&gt;</span> <span class="pre">Shape</span> <span class="pre">Keys</span> <span class="pre">&gt;</span> <span class="pre">Split:</span></code></p>
 </section>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
-<section id="flow">
-<h3>Flow<a class="headerlink" href="#flow" title="Link to this heading">¶</a></h3>
-<p>The <strong>Flow</strong> parameter controls how paired vertices are processed.</p>
+<ol>
+<li><p><strong>Suffix</strong> controls which left/right suffixes are added to the newly created shape keys.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Average</span></code> finds the midpoint between each mirrored vertex pair and places both vertices symmetrically around the selected axis.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Forward</span></code> copies vertex coordinates from the negative side of the symmetry configuration to the positive side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Reverse</span></code> copies vertex coordinates from the positive side of the symmetry configuration to the negative side.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">.L</span> <span class="pre">/</span> <span class="pre">.R</span></code></strong> appends Blender-style uppercase dot suffixes.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">_L</span> <span class="pre">/</span> <span class="pre">_R</span></code></strong> appends uppercase underscore suffixes.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">_l</span> <span class="pre">/</span> <span class="pre">_r</span></code></strong> appends lowercase underscore suffixes.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">-L</span> <span class="pre">/</span> <span class="pre">-R</span></code></strong> appends uppercase dash suffixes.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Left</span> <span class="pre">/</span> <span class="pre">Right</span></code></strong> appends full side names.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">Forward</span></code> and <code class="docutils literal notranslate"><span class="pre">Reverse</span></code> flows depend on the saved configuration, not on the current visible position of the mesh. They use the positive and negative sides stored in the configuration.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>To avoid confusion, it is best not to rotate the mesh unnecessarily after creating the configuration. If your character faces the negative Y direction and the mirror axis is X, the usual interpretation is:
-- <strong>Forward</strong> copies from the right side to the left side.
-- <strong>Reverse</strong> copies from the left side to the right side.</p>
-<p>If your model uses a different orientation, think in terms of the saved positive and negative sides rather than visual left and right.</p>
-</div>
-</section>
-<section id="save-original-as-shape-key">
-<h3>Save Original as Shape Key<a class="headerlink" href="#save-original-as-shape-key" title="Link to this heading">¶</a></h3>
-<p>Enable <strong>Save Original as Shape Key</strong> if you want to preserve the current mesh coordinates before symmetrizing.</p>
-<p>When enabled, OmniMirror creates a shape key named <code class="docutils literal notranslate"><span class="pre">BEFORE_SYMMETRIZE</span></code> before writing the new basis mesh coordinates. This is useful for comparing the result or recovering the previous shape.</p>
-</section>
-</section>
-<section id="symmetrize-process">
-<h2>Symmetrize Process<a class="headerlink" href="#symmetrize-process" title="Link to this heading">¶</a></h2>
-<p>Click <strong>Symmetrize</strong> to apply the selected mode to the active mesh.</p>
-<p>OmniMirror will:</p>
-<ol class="simple">
-<li><p>Load the selected configuration file.</p></li>
-<li><p>Validate that the active mesh has a compatible vertex count.</p></li>
-<li><p>Process all mirrored vertex pairs.</p></li>
-<li><p>Force center vertices onto the selected symmetry axis.</p></li>
-<li><p>Write the processed coordinates back to the basis mesh.</p></li>
+</li>
+<li><p><strong>Side Mapping</strong> controls how the positive and negative sides from the persistent symmetry configuration are written into left/right shape keys.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Positive</span> <span class="pre">-&gt;</span> <span class="pre">Left</span></code></strong> writes the positive side to the left shape key and the negative side to the right shape key.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Positive</span> <span class="pre">-&gt;</span> <span class="pre">Right</span></code></strong> writes the positive side to the right shape key and the negative side to the left shape key.</p></li>
+</ul>
+<p>For a character facing the negative Y direction with X as the mirror axis, <code class="docutils literal notranslate"><span class="pre">Positive</span> <span class="pre">-&gt;</span> <span class="pre">Left</span></code> is usually correct. If your character uses the opposite orientation, switch the mapping.</p>
+</li>
+<li><p><strong>Remove Original</strong> removes the source shape key after the left and right versions are created. Leave it disabled if you want to keep the original combined shape key for comparison or backup.</p></li>
+<li><p><strong>Skip Symmetrical</strong> skips shape keys that already contain left/right indicators such as <code class="docutils literal notranslate"><span class="pre">.L</span></code>, <code class="docutils literal notranslate"><span class="pre">.R</span></code>, <code class="docutils literal notranslate"><span class="pre">_L</span></code>, <code class="docutils literal notranslate"><span class="pre">_R</span></code>, <code class="docutils literal notranslate"><span class="pre">Left</span></code>, or <code class="docutils literal notranslate"><span class="pre">Right</span></code>. This option is enabled by default and is mostly useful for batch processing, where the list may contain both central shape keys and already separated side controls.</p></li>
+<li><p><strong>Falloff</strong> controls the blend distance around the symmetry plane. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> creates a hard split, while values greater than <code class="docutils literal notranslate"><span class="pre">0</span></code> create a smoother transition near the center line.</p></li>
+<li><p><strong>Falloff Shape</strong> controls the curve used inside the falloff area.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Linear</span></code></strong> uses a direct linear transition.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Smooth</span></code></strong> uses a smoothstep-style transition and is the default.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Sharp</span></code></strong> keeps the transition tighter near the center.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Soft</span></code></strong> spreads the transition more gently.</p></li>
+</ul>
+</li>
 </ol>
+</section>
+<section id="split-active">
+<h2>Split Active<a class="headerlink" href="#split-active" title="Link to this heading">¶</a></h2>
+<p>Click <strong>Split Active</strong> to split only the currently active shape key.</p>
+<p>This is the best option when checking suffix, side mapping, or falloff settings before processing a larger batch.</p>
+</section>
+<section id="batch-processing">
+<h2>Batch Processing<a class="headerlink" href="#batch-processing" title="Link to this heading">¶</a></h2>
+<p>Click <strong>Split All</strong> to process every shape key except the Basis shape key.</p>
+<p>If you enable <strong>Advanced Batch Options</strong>, the button changes to <strong>Split Custom Batch</strong>. The checklist lets you choose exactly which shape keys should be processed. Use <strong>Refresh</strong> to rebuild the list, <strong>Check All</strong> to select every item, and <strong>Uncheck All</strong> to clear the selection.</p>
 </section>
 </section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-left" href="config.html" title="Previous">
-        <span aria-hidden="true">←&nbsp;</span>Persistent Symmetry Configuration
-    </a>
-    <a class="float-right" href="shape_key_symmetrization.html" title="Next">
-        Shape Key Symmetrization <span aria-hidden="true">&nbsp;→</span>
+    <a class="float-left" href="shape_key_symmetrization.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Shape Key Symmetrization
     </a>
 </nav>
                     </div>
@@ -187,14 +183,11 @@
                         <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
                             <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
                             <ul>
-<li><a class="reference internal" href="#">Basis Mesh Symmetrization</a><ul>
+<li><a class="reference internal" href="#">Shape Key Split</a><ul>
 <li><a class="reference internal" href="#where-to-find-it">Where to Find It</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#flow">Flow</a></li>
-<li><a class="reference internal" href="#save-original-as-shape-key">Save Original as Shape Key</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#symmetrize-process">Symmetrize Process</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#split-active">Split Active</a></li>
+<li><a class="reference internal" href="#batch-processing">Batch Processing</a></li>
 </ul>
 </li>
 </ul>
