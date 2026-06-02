@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>UV Symmetry &mdash; OmniMirror 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=9683d562" />
+            <link rel="author" title="About these documents" href="about.html" />
+            <link rel="index" title="Index" href="genindex.html" />
+            <link rel="search" title="Search" href="search.html" />
+            <link rel="top" title="OmniMirror 0.0.1 documentation" href="#" />
+            <link rel="prev" title="Shape Key Split" href="shape_key_split.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="https://mykytapetrenko.github.io/OmniMirror-Docs/"
+                        title="OmniMirror"
+                        class="logo navbar-brand"
+                    >
+                        <img src="_static/img/omnimirror_logo.svg" width="75" height="75" alt="OmniMirror"
+                            class="logo-img"
+                        />
+                        OmniMirror
+                    </a>
+                
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vertex_group.html">Vertex Group Symmetrization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shape_key_symmetrization.html">Shape Key Symmetrization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shape_key_split.html">Shape Key Split</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">UV Symmetry</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">UV Symmetry</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/uv.md" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/uv.md.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="uv-symmetry">
+<h1>UV Symmetry<a class="headerlink" href="#uv-symmetry" title="Link to this heading">¶</a></h1>
+<p>UV tools use the persistent symmetry configuration to find matching UV loops through the mesh topology. The tools do not guess symmetry only from the current UV layout. They use the saved vertex pairs from the config, then apply that information to selected UVs.</p>
+<p>Before using these tools, make sure the <strong>Config File</strong> field in the UV Editor’s <strong>OmniMirror</strong> panel points to a compatible configuration JSON file. The mesh must be in <strong>Edit Mode</strong>, and the object must have an active UV layer.</p>
+<section id="where-to-find-it">
+<h2>Where to Find It<a class="headerlink" href="#where-to-find-it" title="Link to this heading">¶</a></h2>
+<p>In Blender, open the UV Editor sidebar and go to:</p>
+<p><code class="docutils literal notranslate"><span class="pre">OmniMirror</span></code></p>
+<p>The UV panel contains shared settings at the top, followed by:</p>
+<ul class="simple">
+<li><p><strong>Side Preview</strong></p></li>
+<li><p><strong>Symmetrize</strong></p></li>
+<li><p><strong>Rigid Snap</strong></p></li>
+</ul>
+</section>
+<section id="shared-parameters">
+<h2>Shared Parameters<a class="headerlink" href="#shared-parameters" title="Link to this heading">¶</a></h2>
+<ol class="simple">
+<li><p><strong>UV Axis</strong> controls which UV coordinate is used as the symmetry axis.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">U</span></code></strong> mirrors across the U coordinate.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">V</span></code></strong> mirrors across the V coordinate.</p></li>
+</ul>
+</li>
+<li><p><strong>Axis Position</strong> controls where the symmetry axis is placed in UV space. The eyedropper button next to it sets the value from the selected UV loop centroid.</p></li>
+<li><p><strong>Weld Distance</strong> controls how close UV loops need to be to be treated as connected or centered. It is used for center-loop detection, welded UV groups, and UV island detection.</p></li>
+</ol>
+</section>
+<section id="side-preview">
+<h2>Side Preview<a class="headerlink" href="#side-preview" title="Link to this heading">¶</a></h2>
+<p><strong>Side Preview</strong> draws an overlay in the UV Editor using the persistent symmetry configuration.</p>
+<p>It helps you check how OmniMirror classifies UVs before running an operation:</p>
+<ul class="simple">
+<li><p>negative side of the config;</p></li>
+<li><p>positive side of the config;</p></li>
+<li><p>center vertices.</p></li>
+</ul>
+<section id="preview-controls">
+<h3>Preview Controls<a class="headerlink" href="#preview-controls" title="Link to this heading">¶</a></h3>
+<ol class="simple">
+<li><p><strong>Auto Off</strong> disables the preview automatically when editing input starts. If it is disabled, editing can make the preview outdated until you refresh it.</p></li>
+<li><p><strong>Start Preview</strong> controls which UVs are shown.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">UVs</span></code></strong> builds the preview for all UV loops.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Selected</span> <span class="pre">UVs</span></code></strong> builds the preview only for selected UV loops.</p></li>
+</ul>
+</li>
+<li><p><strong>Stop Preview</strong> turns the active preview off.</p></li>
+<li><p><strong>Refresh Preview</strong> rebuilds the overlay after the UV selection or layout changes.</p></li>
+</ol>
+</section>
+<section id="viewport-display">
+<h3>Viewport Display<a class="headerlink" href="#viewport-display" title="Link to this heading">¶</a></h3>
+<p>The <strong>Viewport Display</strong> subsection only changes how the preview is drawn. It does not affect symmetrization or snapping.</p>
+<p>Available display settings:</p>
+<ul class="simple">
+<li><p><strong>Overlay Line Width</strong></p></li>
+<li><p><strong>Overlay Fill</strong></p></li>
+<li><p><strong>Fill Opacity</strong></p></li>
+<li><p><strong>Overlay Outline</strong></p></li>
+<li><p><strong>Outline Width</strong></p></li>
+</ul>
+</section>
+</section>
+<section id="symmetrize">
+<h2>Symmetrize<a class="headerlink" href="#symmetrize" title="Link to this heading">¶</a></h2>
+<p>The <strong>Symmetrize</strong> tool processes selected UV loops. A UV loop is processed only when OmniMirror can find its matching loop through the persistent symmetry configuration and the matching loop is also selected.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<ol class="simple">
+<li><p><strong>Mode</strong> controls how selected symmetrical UV pairs are processed.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Average</span></code></strong> averages paired UVs symmetrically around the configured UV axis.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Forward</span></code></strong> copies UVs from the negative side to the matching positive side.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Reverse</span></code></strong> copies UVs from the positive side to the matching negative side.</p></li>
+</ul>
+</li>
+<li><p><strong>Force Center To Axis</strong> moves detected center UV loops onto the configured UV axis. This is enabled by default and is useful for keeping center seams aligned.</p></li>
+</ol>
+</section>
+<section id="symmetrize-selected-uvs">
+<h3>Symmetrize Selected UVs<a class="headerlink" href="#symmetrize-selected-uvs" title="Link to this heading">¶</a></h3>
+<p>Click <strong>Symmetrize Selected UVs</strong> to apply the selected mode to the current UV selection.</p>
+<p>OmniMirror also uses <strong>Weld Distance</strong> to group nearby UV loops that share the same 3D vertex. If multiple selected loops are close enough to be treated as the same welded point, their calculated result is averaged so they stay together.</p>
+</section>
+</section>
+<section id="rigid-snap">
+<h2>Rigid Snap<a class="headerlink" href="#rigid-snap" title="Link to this heading">¶</a></h2>
+<p>The <strong>Rigid Snap</strong> tools move selected UV islands without directly reshaping every UV pair one by one. They are useful when you want to align islands while preserving their internal shape as much as possible.</p>
+</section>
+<section id="axis-snap-selected-uv-islands">
+<h2>Axis Snap Selected UV Islands<a class="headerlink" href="#axis-snap-selected-uv-islands" title="Link to this heading">¶</a></h2>
+<p><strong>Axis Snap Selected UV Islands</strong> works on selected UV islands that contain detected center loops.</p>
+<p>The tool finds the center UV loops inside each selected island, estimates the island’s center-line direction, then rotates and moves the selected island so that its center line lands on the configured UV axis.</p>
+<p>Use this when a UV island should be centered on the symmetry axis but is slightly offset or tilted.</p>
+</section>
+<section id="icp-snap-selected-uv-islands">
+<h2>ICP Snap Selected UV Islands<a class="headerlink" href="#icp-snap-selected-uv-islands" title="Link to this heading">¶</a></h2>
+<p><strong>ICP Snap Selected UV Islands</strong> aligns one side’s selected UV islands to the other side using matched UV loop pairs from the persistent symmetry configuration.</p>
+<p>ICP stands for <em>Iterative Closest Point</em>. In this tool, it means OmniMirror uses several matched UV pairs as control points, calculates the translation and rotation needed to align the target island to the mirrored source island, and applies that transform to the selected target island. If <strong>Use Scale</strong> is enabled, it may also apply uniform scale.</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<ol class="simple">
+<li><p><strong>Direction</strong> controls which side stays fixed and which side is moved.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Forward</span></code></strong> keeps the negative side fixed and snaps the positive side.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Reverse</span></code></strong> keeps the positive side fixed and snaps the negative side.</p></li>
+</ul>
+</li>
+<li><p><strong>Use Scale</strong> allows ICP snapping to apply uniform scale in addition to translation and rotation. Leave it disabled if the island size should stay unchanged.</p></li>
+</ol>
+</section>
+<section id="selection-requirements">
+<h3>Selection Requirements<a class="headerlink" href="#selection-requirements" title="Link to this heading">¶</a></h3>
+<p>For ICP Snap, select UV loops from both the source and target islands. OmniMirror needs enough matched selected loops to calculate the transform. Center loops are ignored for this operation, and pairs inside the same UV island are skipped.</p>
+</section>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="shape_key_split.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Shape Key Split
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">UV Symmetry</a><ul>
+<li><a class="reference internal" href="#where-to-find-it">Where to Find It</a></li>
+<li><a class="reference internal" href="#shared-parameters">Shared Parameters</a></li>
+<li><a class="reference internal" href="#side-preview">Side Preview</a><ul>
+<li><a class="reference internal" href="#preview-controls">Preview Controls</a></li>
+<li><a class="reference internal" href="#viewport-display">Viewport Display</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symmetrize">Symmetrize</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#symmetrize-selected-uvs">Symmetrize Selected UVs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rigid-snap">Rigid Snap</a></li>
+<li><a class="reference internal" href="#axis-snap-selected-uv-islands">Axis Snap Selected UV Islands</a></li>
+<li><a class="reference internal" href="#icp-snap-selected-uv-islands">ICP Snap Selected UV Islands</a><ul>
+<li><a class="reference internal" href="#id1">Parameters</a></li>
+<li><a class="reference internal" href="#selection-requirements">Selection Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/features/">Features</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/about-wagtail/"> About Wagtail</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/services/"> Services</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/blog/"> Blog</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/packages/"> Packages</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/developers/"> Developers</a></li>
+                        
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                <p style="display: none">
+                    <a class="text-light" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
+                        Wagtail Sphinx Theme 6.3.0
+                    </a>
+                </p>
+            </div>
+            <div class="text-center">
+                    &copy; Copyright 2026, Squeezy Pixels (Mykyta Petrenko)
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="_static/dist/theme.js"></script>
+        <script type="text/javascript" src="_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="_static/searchtools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>

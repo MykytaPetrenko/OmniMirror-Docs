@@ -14,3 +14,4 @@ Welcome to OmniMirror Docs!
    vertex_group.md
    shape_key_symmetrization.md
    shape_key_split.md
+   uv.md
