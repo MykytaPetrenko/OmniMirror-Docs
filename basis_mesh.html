@@ -2,17 +2,20 @@
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Index &mdash; OmniMirror 0.0.1 documentation</title>
+        <title>Basis Mesh Symmetrization &mdash; OmniMirror 0.0.1 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=9683d562" />
             <link rel="author" title="About these documents" href="about.html" />
-            <link rel="index" title="Index" href="#" />
+            <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
             <link rel="top" title="OmniMirror 0.0.1 documentation" href="#" />
+            <link rel="prev" title="Persistent Symmetry Configuration" href="config.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -56,11 +59,11 @@
 </div><div class="site-toc">
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Basis Mesh Symmetrization</a></li>
 </ul>
 
     </nav>
@@ -81,7 +84,7 @@
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
         <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Index</li>
+        <li class="breadcrumb-item active" aria-current="page">Basis Mesh Symmetrization</li>
     </ol>
 </nav>
                     </div>
@@ -93,9 +96,13 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/genindex" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/basis_mesh.md" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/basis_mesh.md.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
     </a>
                         
                     </div>
@@ -108,13 +115,86 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <h1 id="index">Index</h1>
-    <div class="genindex-jumpbox">
-        
-    </div>
+    <section id="basis-mesh-symmetrization">
+<h1>Basis Mesh Symmetrization<a class="headerlink" href="#basis-mesh-symmetrization" title="Link to this heading">¶</a></h1>
+<p>Basis mesh symmetrization changes the actual vertex coordinates of the active mesh. It uses the selected persistent symmetry configuration to decide which vertices are paired and which vertices belong to the center line.</p>
+<p>Before using this tool, make sure the <strong>Config File</strong> field in the <strong>Persistent Symmetry Config</strong> section points to a valid configuration JSON file. The active mesh must have the same topology and vertex order as the mesh used to create that configuration.</p>
+<section id="where-to-find-it">
+<h2>Where to Find It<a class="headerlink" href="#where-to-find-it" title="Link to this heading">¶</a></h2>
+<p>In Blender, open the 3D View sidebar and go to:</p>
+<p><code class="docutils literal notranslate"><span class="pre">OmniMirror</span> <span class="pre">&gt;</span> <span class="pre">Basis</span> <span class="pre">Mesh</span></code></p>
+<p>The section contains:</p>
+<ul class="simple">
+<li><p><strong>Mode</strong></p></li>
+<li><p><strong>Save Original as Shape Key</strong></p></li>
+<li><p><strong>Symmetrize</strong></p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<section id="flow">
+<h3>Flow<a class="headerlink" href="#flow" title="Link to this heading">¶</a></h3>
+<p>The <strong>Flow</strong> parameter controls how paired vertices are processed.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Average</span></code> finds the midpoint between each mirrored vertex pair and places both vertices symmetrically around the selected axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Forward</span></code> copies vertex coordinates from the negative side of the symmetry configuration to the positive side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Reverse</span></code> copies vertex coordinates from the positive side of the symmetry configuration to the negative side.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Forward</span></code> and <code class="docutils literal notranslate"><span class="pre">Reverse</span></code> flows depend on the saved configuration, not on the current visible position of the mesh. They use the positive and negative sides stored in the configuration.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To avoid confusion, it is best not to rotate the mesh unnecessarily after creating the configuration. If your character faces the negative Y direction and the mirror axis is X, the usual interpretation is:
+- <strong>Forward</strong> copies from the right side to the left side.
+- <strong>Reverse</strong> copies from the left side to the right side.</p>
+<p>If your model uses a different orientation, think in terms of the saved positive and negative sides rather than visual left and right.</p>
+</div>
+</section>
+<section id="save-original-as-shape-key">
+<h3>Save Original as Shape Key<a class="headerlink" href="#save-original-as-shape-key" title="Link to this heading">¶</a></h3>
+<p>Enable <strong>Save Original as Shape Key</strong> if you want to preserve the current mesh coordinates before symmetrizing.</p>
+<p>When enabled, OmniMirror creates a shape key named <code class="docutils literal notranslate"><span class="pre">BEFORE_SYMMETRIZE</span></code> before writing the new basis mesh coordinates. This is useful for comparing the result or recovering the previous shape.</p>
+</section>
+</section>
+<section id="symmetrize-process">
+<h2>Symmetrize Process<a class="headerlink" href="#symmetrize-process" title="Link to this heading">¶</a></h2>
+<p>Click <strong>Symmetrize</strong> to apply the selected mode to the active mesh.</p>
+<p>OmniMirror will:</p>
+<ol class="simple">
+<li><p>Load the selected configuration file.</p></li>
+<li><p>Validate that the active mesh has a compatible vertex count.</p></li>
+<li><p>Process all mirrored vertex pairs.</p></li>
+<li><p>Force center vertices onto the selected symmetry axis.</p></li>
+<li><p>Write the processed coordinates back to the basis mesh.</p></li>
+</ol>
+</section>
+</section>
+
 </main>
-                        
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="config.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Persistent Symmetry Configuration
+    </a>
+</nav>
                     </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Basis Mesh Symmetrization</a><ul>
+<li><a class="reference internal" href="#where-to-find-it">Where to Find It</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#flow">Flow</a></li>
+<li><a class="reference internal" href="#save-original-as-shape-key">Save Original as Shape Key</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symmetrize-process">Symmetrize Process</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
                     
                 </div>
             </div>
