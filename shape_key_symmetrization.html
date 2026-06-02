@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Shape Key Symmetrization &mdash; OmniMirror 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=9683d562" />
+            <link rel="author" title="About these documents" href="about.html" />
+            <link rel="index" title="Index" href="genindex.html" />
+            <link rel="search" title="Search" href="search.html" />
+            <link rel="top" title="OmniMirror 0.0.1 documentation" href="#" />
+    </head>
+<body>
+    <script type="text/javascript" src="_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="https://mykytapetrenko.github.io/OmniMirror-Docs/"
+                        title="OmniMirror"
+                        class="logo navbar-brand"
+                    >
+                        <img src="_static/img/omnimirror_logo.svg" width="75" height="75" alt="OmniMirror"
+                            class="logo-img"
+                        />
+                        OmniMirror
+                    </a>
+                
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Shape Key Symmetrization</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/shape_key_symmetrization.md" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/shape_key_symmetrization.md.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="shape-key-symmetrization">
+<h1>Shape Key Symmetrization<a class="headerlink" href="#shape-key-symmetrization" title="Link to this heading">¶</a></h1>
+<p>Shape key symmetrization uses the persistent symmetry configuration to process shape key coordinates.</p>
+<p>Before using these tools, make sure the <strong>Config File</strong> field in the <strong>Persistent Symmetry Config</strong> section points to a compatible configuration JSON file.</p>
+<section id="where-to-find-it">
+<h2>Where to Find It<a class="headerlink" href="#where-to-find-it" title="Link to this heading">¶</a></h2>
+<p>In Blender, open the 3D View sidebar and go to:</p>
+<p><code class="docutils literal notranslate"><span class="pre">OmniMirror</span> <span class="pre">&gt;</span> <span class="pre">Shape</span> <span class="pre">Keys</span> <span class="pre">&gt;</span> <span class="pre">Symmetrize:</span></code></p>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<ol class="simple">
+<li><p><strong>Data</strong> controls what is symmetrized.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Delta</span> <span class="pre">(Recommended)</span></code> symmetrizes the offset from the shape key’s <strong>Relative To</strong> target. This is usually the safest and most useful mode. For example, if a shape key raises only the right eyebrow, Delta mode can copy that change to the left side without requiring the current basis mesh to be perfectly symmetrical.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Raw</span></code> symmetrizes the final raw coordinates stored in the shape key. This can be useful in specific cases, but it behaves differently from Delta mode. If the basis mesh is already asymmetrical, Raw mode symmetrizes the resulting positions, not just the shape key changes. Use <code class="docutils literal notranslate"><span class="pre">Raw</span></code> when you intentionally want the final shape key coordinates to become symmetrical.</p></li>
+</ul>
+</li>
+<li><p><strong>Type</strong> controls how shape keys are matched before processing.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Single</span></code></strong> treats each shape key as a standalone, central shape key. It symmetrizes the shape key within itself.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Pair</span></code></strong> expects a left/right shape key pair. OmniMirror tries to find the matching counterpart by using Blender-style side names, such as <code class="docutils literal notranslate"><span class="pre">.L</span></code> and <code class="docutils literal notranslate"><span class="pre">.R</span></code>, <code class="docutils literal notranslate"><span class="pre">_L</span></code> and <code class="docutils literal notranslate"><span class="pre">_R</span></code>, or <code class="docutils literal notranslate"><span class="pre">Left</span></code> and <code class="docutils literal notranslate"><span class="pre">Right</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Auto</span></code></strong> tries to use paired processing when a matching left/right counterpart exists. If no counterpart is found, it falls back to single shape key processing. <code class="docutils literal notranslate"><span class="pre">Auto</span></code> is a good default for batch processing mixed shape key lists.</p></li>
+</ul>
+</li>
+<li><p><strong>Single Flow</strong> (very similar to Flow parameter from Base Mesh block) is used when a shape key is processed as a single shape key. The positive and negative sides come from the saved symmetry configuration.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Average</span></code> averages the mirrored deltas or coordinates between both sides.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Forward</span></code> copies from the negative side to the positive side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Reverse</span></code> copies from the positive side to the negative side.</p></li>
+</ul>
+</li>
+<li><p><strong>Pair Flow</strong> is used when a shape key is processed together with a left/right counterpart. For paired shape keys, the direction is based on the shape key names, not on the positive/negative side from the persistent symmetry configuration.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Average</span></code> averages the paired shape keys.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Left</span> <span class="pre">-&gt;</span> <span class="pre">Right</span></code> copies the left-named shape key to the right-named shape key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Right</span> <span class="pre">-&gt;</span> <span class="pre">Left</span></code> copies the right-named shape key to the left-named shape key.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="symmetrize-active">
+<h2>Symmetrize Active<a class="headerlink" href="#symmetrize-active" title="Link to this heading">¶</a></h2>
+<p>Click <strong>Symmetrize Active</strong> to process only the currently active shape key or a pair of shape keys where one of them is active.</p>
+</section>
+<section id="batch-processing">
+<h2>Batch Processing<a class="headerlink" href="#batch-processing" title="Link to this heading">¶</a></h2>
+<p>Click <strong>Symmetrize All</strong> to process every shape key except the Basis shape key.</p>
+<p>If you enable <strong>Advanced Batch Options</strong>, the button changes to <strong>Symmetrize Custom Batch</strong>. The checklist lets you choose exactly which shape keys should be processed. Use <strong>Refresh</strong> to rebuild the list, <strong>Check All</strong> to select every item, and <strong>Uncheck All</strong> to clear the selection.</p>
+</section>
+</section>
+
+</main>
+                        
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Shape Key Symmetrization</a><ul>
+<li><a class="reference internal" href="#where-to-find-it">Where to Find It</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#symmetrize-active">Symmetrize Active</a></li>
+<li><a class="reference internal" href="#batch-processing">Batch Processing</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/features/">Features</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/about-wagtail/"> About Wagtail</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/services/"> Services</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/blog/"> Blog</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/packages/"> Packages</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/developers/"> Developers</a></li>
+                        
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                <p style="display: none">
+                    <a class="text-light" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
+                        Wagtail Sphinx Theme 6.3.0
+                    </a>
+                </p>
+            </div>
+            <div class="text-center">
+                    &copy; Copyright 2026, Squeezy Pixels (Mykyta Petrenko)
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="_static/dist/theme.js"></script>
+        <script type="text/javascript" src="_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="_static/searchtools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>
