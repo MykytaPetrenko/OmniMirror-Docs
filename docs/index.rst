@@ -11,3 +11,4 @@ Welcome to OmniMirror Docs!
    workflow.md
    config.md
    basis_mesh.md
+   shape_key_symmetrization.md
