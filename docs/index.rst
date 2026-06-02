@@ -10,4 +10,4 @@ Welcome to OmniMirror Docs!
    about.md
    workflow.md
    config.md
-
+   basis_mesh.md
