@@ -122,14 +122,30 @@
                         <main role="main" id="main">
     <section id="workflow">
 <h1>Workflow<a class="headerlink" href="#workflow" title="Link to this heading">¶</a></h1>
-<p>A good workflow is:</p>
+<p>OmniMirror is built around one main idea: create a persistent symmetry configuration while the mesh is still symmetrical, then reuse it later while the topology and vertex order stay unchanged.</p>
+<section id="basic-order">
+<h2>Basic Order<a class="headerlink" href="#basic-order" title="Link to this heading">¶</a></h2>
 <ol class="simple">
-<li><p>Create or obtain a perfectly symmetrical base mesh, for example right after applying the Mirror modifier.</p></li>
-<li><p>Make sure the mesh is clean, symmetrical, and does not contain duplicated vertices.</p></li>
-<li><p>Create the OmniMirror configuration immediately.</p></li>
-<li><p>Edit the mesh.</p></li>
-<li><p>Use that persistent symmetry configuration later to symmetrize anything you need: the base mesh, shape keys, vertex groups, or UV maps.</p></li>
+<li><p>Start from a clean symmetrical mesh, usually right after applying the Mirror modifier.</p></li>
+<li><p>Create a persistent symmetry configuration. See <a class="reference internal" href="config.html"><span class="doc">Persistent Symmetry Configuration</span></a>.</p></li>
+<li><p>Continue editing the model without changing topology or vertex order.</p></li>
+<li><p>Use the OmniMirror tools when you need symmetry again.</p></li>
 </ol>
+</section>
+<section id="main-tools">
+<h2>Main Tools<a class="headerlink" href="#main-tools" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Use <a class="reference internal" href="basis_mesh.html"><span class="doc">Basis Mesh Symmetrization</span></a> when the base mesh becomes asymmetrical but still has the same topology and vertex order.</p></li>
+<li><p>Use <a class="reference internal" href="vertex_group.html"><span class="doc">Vertex Group Symmetrization</span></a> when painting weights on one side and copying or averaging them to the other side.</p></li>
+<li><p>Use <a class="reference internal" href="shape_key_symmetrization.html"><span class="doc">Shape Key Symmetrization</span></a> when creating a shape key on one side and symmetrizing the deformation.</p></li>
+<li><p>Use <a class="reference internal" href="shape_key_split.html"><span class="doc">Shape Key Split</span></a> when one shape key affects both sides and you need separate left/right controls.</p></li>
+<li><p>Use <a class="reference internal" href="uv.html"><span class="doc">UV Symmetry</span></a> for UV side preview, selected UV symmetrization, axis snapping, and ICP snapping for paired UV islands.</p></li>
+</ul>
+</section>
+<section id="important-rule">
+<h2>Important Rule<a class="headerlink" href="#important-rule" title="Link to this heading">¶</a></h2>
+<p>The configuration remains valid only while topology and vertex order remain the same. Moving vertices, editing shape keys, painting weights, and moving UVs are fine. Adding, deleting, merging, splitting, remeshing, or reordering vertices requires a new configuration.</p>
+</section>
 </section>
 
 </main>
@@ -142,6 +158,21 @@
     </a>
 </nav>
                     </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Workflow</a><ul>
+<li><a class="reference internal" href="#basic-order">Basic Order</a></li>
+<li><a class="reference internal" href="#main-tools">Main Tools</a></li>
+<li><a class="reference internal" href="#important-rule">Important Rule</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
                     
                 </div>
             </div>
