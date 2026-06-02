@@ -211,14 +211,19 @@
 </section>
 <section id="axis-snap-selected-uv-islands">
 <h2>Axis Snap Selected UV Islands<a class="headerlink" href="#axis-snap-selected-uv-islands" title="Link to this heading">¶</a></h2>
-<p><strong>Axis Snap Selected UV Islands</strong> works on selected UV islands that contain detected center loops.</p>
-<p>The tool finds the center UV loops inside each selected island, estimates the island’s center-line direction, then rotates and moves the selected island so that its center line lands on the configured UV axis.</p>
+<p><strong>Axis Snap Selected UV Islands</strong> aligns a symmetrical UV island to the configured UV axis.</p>
+<p>The tool uses the center loops inside the island to estimate its middle line, then rotates and moves the selected UVs so that this middle line lands on the configured UV axis.</p>
 <p>Use this when a UV island should be centered on the symmetry axis but is slightly offset or tilted.</p>
+<section id="selection-requirements">
+<h3>Selection Requirements<a class="headerlink" href="#selection-requirements" title="Link to this heading">¶</a></h3>
+<p>Use Axis Snap for a single UV island that contains both sides of the mesh and center loops between them.</p>
+<p>The island must include center loops detected from the persistent symmetry configuration. If OmniMirror cannot find center loops inside the selected island, the island is skipped.</p>
+</section>
 </section>
 <section id="icp-snap-selected-uv-islands">
 <h2>ICP Snap Selected UV Islands<a class="headerlink" href="#icp-snap-selected-uv-islands" title="Link to this heading">¶</a></h2>
-<p><strong>ICP Snap Selected UV Islands</strong> aligns one side’s selected UV islands to the other side using matched UV loop pairs from the persistent symmetry configuration.</p>
-<p>ICP stands for <em>Iterative Closest Point</em>. In this tool, it means OmniMirror uses several matched UV pairs as control points, calculates the translation and rotation needed to align the target island to the mirrored source island, and applies that transform to the selected target island. If <strong>Use Scale</strong> is enabled, it may also apply uniform scale.</p>
+<p><strong>ICP Snap Selected UV Islands</strong> aligns paired symmetrical UV islands.</p>
+<p>The tool uses matched UV pairs as control points, then moves the target island with translation and rotation. If <strong>Use Scale</strong> is enabled, it may also apply uniform scale.</p>
 <section id="id1">
 <h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <ol class="simple">
@@ -231,9 +236,10 @@
 <li><p><strong>Use Scale</strong> allows ICP snapping to apply uniform scale in addition to translation and rotation. Leave it disabled if the island size should stay unchanged.</p></li>
 </ol>
 </section>
-<section id="selection-requirements">
-<h3>Selection Requirements<a class="headerlink" href="#selection-requirements" title="Link to this heading">¶</a></h3>
-<p>For ICP Snap, select UV loops from both the source and target islands. OmniMirror needs enough matched selected loops to calculate the transform. Center loops are ignored for this operation, and pairs inside the same UV island are skipped.</p>
+<section id="id2">
+<h3>Selection Requirements<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p>Use ICP Snap for two separate UV islands that represent symmetrical parts of the mesh.</p>
+<p>Select UV loops from both the source and target islands. OmniMirror needs matched selected loop pairs across the two islands to calculate the transform. Center loops are ignored for this operation, and pairs inside the same UV island are skipped.</p>
 </section>
 </section>
 </section>
@@ -264,10 +270,13 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#rigid-snap">Rigid Snap</a></li>
-<li><a class="reference internal" href="#axis-snap-selected-uv-islands">Axis Snap Selected UV Islands</a></li>
+<li><a class="reference internal" href="#axis-snap-selected-uv-islands">Axis Snap Selected UV Islands</a><ul>
+<li><a class="reference internal" href="#selection-requirements">Selection Requirements</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#icp-snap-selected-uv-islands">ICP Snap Selected UV Islands</a><ul>
 <li><a class="reference internal" href="#id1">Parameters</a></li>
-<li><a class="reference internal" href="#selection-requirements">Selection Requirements</a></li>
+<li><a class="reference internal" href="#id2">Selection Requirements</a></li>
 </ul>
 </li>
 </ul>
