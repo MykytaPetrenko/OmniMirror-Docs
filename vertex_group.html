@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Welcome to OmniMirror Docs! &mdash; OmniMirror 0.0.1 documentation</title>
+        <title>Vertex Group Symmetrization &mdash; OmniMirror 0.0.1 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
@@ -15,7 +15,8 @@
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
             <link rel="top" title="OmniMirror 0.0.1 documentation" href="#" />
-            <link rel="next" title="About" href="about.html" />
+            <link rel="next" title="Shape Key Symmetrization" href="shape_key_symmetrization.html" />
+            <link rel="prev" title="Basis Mesh Symmetrization" href="basis_mesh.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -59,12 +60,12 @@
 </div><div class="site-toc">
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vertex_group.html">Vertex Group Symmetrization</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Vertex Group Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_symmetrization.html">Shape Key Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_split.html">Shape Key Split</a></li>
 </ul>
@@ -86,8 +87,8 @@
                     <div class="col">
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
-        <li class="breadcrumb-item"><a href="#">Docs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Welcome to OmniMirror Docs!</li>
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Vertex Group Symmetrization</li>
     </ol>
 </nav>
                     </div>
@@ -99,11 +100,11 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/index.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/vertex_group.md" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
-    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/index.rst.txt" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/vertex_group.md.txt" rel="nofollow">
         <span class="btn-icon"><span class="fas fa-code"></span></span>
         <span class="btn-text">View source</span>
     </a>
@@ -118,62 +119,81 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="welcome-to-omnimirror-docs">
-<h1>Welcome to OmniMirror Docs!<a class="headerlink" href="#welcome-to-omnimirror-docs" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about.html#how-it-works">How It Works</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#what-you-can-do-with-it">What You Can Do With It</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#limitations">Limitations</a></li>
+    <section id="vertex-group-symmetrization">
+<h1>Vertex Group Symmetrization<a class="headerlink" href="#vertex-group-symmetrization" title="Link to this heading">¶</a></h1>
+<p>Vertex group symmetrization uses the persistent symmetry configuration to process vertex weights.</p>
+<p>Before using this tool, make sure the <strong>Config File</strong> field in the <strong>Persistent Symmetry Config</strong> section points to a compatible configuration JSON file.</p>
+<section id="where-to-find-it">
+<h2>Where to Find It<a class="headerlink" href="#where-to-find-it" title="Link to this heading">¶</a></h2>
+<p>In Blender, open the 3D View sidebar and go to:</p>
+<p><code class="docutils literal notranslate"><span class="pre">OmniMirror</span> <span class="pre">&gt;</span> <span class="pre">Vertex</span> <span class="pre">Groups</span></code></p>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<ol class="simple">
+<li><p><strong>Type</strong> controls how vertex groups are matched before processing.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Single</span></code></strong> treats each vertex group as a standalone group. Weights are symmetrized within the same vertex group.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Pair</span></code></strong> expects a left/right vertex group pair. OmniMirror tries to find the matching counterpart by using Blender-style side names, such as <code class="docutils literal notranslate"><span class="pre">.L</span></code> and <code class="docutils literal notranslate"><span class="pre">.R</span></code>, <code class="docutils literal notranslate"><span class="pre">_L</span></code> and <code class="docutils literal notranslate"><span class="pre">_R</span></code>, or <code class="docutils literal notranslate"><span class="pre">Left</span></code> and <code class="docutils literal notranslate"><span class="pre">Right</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Auto</span></code></strong> uses paired processing for side-named vertex groups and single-group processing for the rest. <code class="docutils literal notranslate"><span class="pre">Auto</span></code> is a good default for batch processing mixed vertex group lists.</p></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config.html#mesh-requirements">Mesh Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html#symmetry-detection">Symmetry Detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html#creating-a-configuration-file">Creating a Configuration File</a></li>
+<li><p><strong>Single Flow</strong> is used when a vertex group is processed as a single group. The positive and negative sides come from the saved symmetry configuration.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Average</span></code></strong> averages the mirrored weights between both sides.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Forward</span></code></strong> copies weights from the negative side to the positive side.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Reverse</span></code></strong> copies weights from the positive side to the negative side.</p></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basis_mesh.html#where-to-find-it">Where to Find It</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basis_mesh.html#parameters">Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basis_mesh.html#symmetrize-process">Symmetrize Process</a></li>
+<li><p><strong>Pair Flow</strong> is used when a vertex group is processed together with a left/right counterpart. For paired vertex groups, <code class="docutils literal notranslate"><span class="pre">Left</span> <span class="pre">-&gt;</span> <span class="pre">Right</span></code> and <code class="docutils literal notranslate"><span class="pre">Right</span> <span class="pre">-&gt;</span> <span class="pre">Left</span></code> are based on the vertex group names, not on the positive/negative side from the persistent symmetry configuration.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Average</span></code></strong> averages the paired vertex group weights.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Left</span> <span class="pre">-&gt;</span> <span class="pre">Right</span></code></strong> copies the left-named vertex group to the right-named vertex group.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Right</span> <span class="pre">-&gt;</span> <span class="pre">Left</span></code></strong> copies the right-named vertex group to the left-named vertex group.</p></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="vertex_group.html">Vertex Group Symmetrization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="vertex_group.html#where-to-find-it">Where to Find It</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vertex_group.html#parameters">Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vertex_group.html#symmetrize-single">Symmetrize Single</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vertex_group.html#batch-processing">Batch Processing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="shape_key_symmetrization.html">Shape Key Symmetrization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shape_key_symmetrization.html#where-to-find-it">Where to Find It</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shape_key_symmetrization.html#parameters">Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shape_key_symmetrization.html#symmetrize-active">Symmetrize Active</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shape_key_symmetrization.html#batch-processing">Batch Processing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="shape_key_split.html">Shape Key Split</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shape_key_split.html#where-to-find-it">Where to Find It</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shape_key_split.html#parameters">Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shape_key_split.html#split-active">Split Active</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shape_key_split.html#batch-processing">Batch Processing</a></li>
-</ul>
-</li>
-</ul>
-</div>
+<li><p><strong>Advanced Batch Options</strong> enables a checklist for choosing which vertex groups should be processed by the batch operation.</p></li>
+</ol>
+</section>
+<section id="symmetrize-single">
+<h2>Symmetrize Single<a class="headerlink" href="#symmetrize-single" title="Link to this heading">¶</a></h2>
+<p>Click <strong>Symmetrize Single</strong> to process only the active vertex group or a pair of vertex groups where one of them is active.</p>
+<p>This is the best option when checking the selected <strong>Type</strong>, <strong>Single Flow</strong>, or <strong>Pair Flow</strong> settings before processing a larger set.</p>
+</section>
+<section id="batch-processing">
+<h2>Batch Processing<a class="headerlink" href="#batch-processing" title="Link to this heading">¶</a></h2>
+<p>Click <strong>Symmetrize All</strong> to process every vertex group on the active mesh.</p>
+<p>If you enable <strong>Advanced Batch Options</strong>, the button changes to <strong>Symmetrize Custom Batch</strong>. The checklist lets you choose exactly which vertex groups should be processed. Use <strong>Refresh</strong> to rebuild the list, <strong>Check All</strong> to select every item, and <strong>Uncheck All</strong> to clear the selection.</p>
+<p>During processing, OmniMirror shows progress and allows the operation to be cancelled.</p>
+</section>
 </section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-right" href="about.html" title="Next">
-        About <span aria-hidden="true">&nbsp;→</span>
+    <a class="float-left" href="basis_mesh.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Basis Mesh Symmetrization
+    </a>
+    <a class="float-right" href="shape_key_symmetrization.html" title="Next">
+        Shape Key Symmetrization <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Vertex Group Symmetrization</a><ul>
+<li><a class="reference internal" href="#where-to-find-it">Where to Find It</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#symmetrize-single">Symmetrize Single</a></li>
+<li><a class="reference internal" href="#batch-processing">Batch Processing</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
                     
                 </div>
             </div>
