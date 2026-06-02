@@ -12,3 +12,4 @@ Welcome to OmniMirror Docs!
    config.md
    basis_mesh.md
    shape_key_symmetrization.md
+   shape_key_split.md
