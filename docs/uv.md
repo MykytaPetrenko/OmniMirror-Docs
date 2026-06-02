@@ -85,17 +85,23 @@ The **Rigid Snap** tools move selected UV islands without directly reshaping eve
 
 ## Axis Snap Selected UV Islands
 
-**Axis Snap Selected UV Islands** works on selected UV islands that contain detected center loops.
+**Axis Snap Selected UV Islands** aligns a symmetrical UV island to the configured UV axis.
 
-The tool finds the center UV loops inside each selected island, estimates the island's center-line direction, then rotates and moves the selected island so that its center line lands on the configured UV axis.
+The tool uses the center loops inside the island to estimate its middle line, then rotates and moves the selected UVs so that this middle line lands on the configured UV axis.
 
 Use this when a UV island should be centered on the symmetry axis but is slightly offset or tilted.
 
+### Selection Requirements
+
+Use Axis Snap for a single UV island that contains both sides of the mesh and center loops between them.
+
+The island must include center loops detected from the persistent symmetry configuration. If OmniMirror cannot find center loops inside the selected island, the island is skipped.
+
 ## ICP Snap Selected UV Islands
 
-**ICP Snap Selected UV Islands** aligns one side's selected UV islands to the other side using matched UV loop pairs from the persistent symmetry configuration.
+**ICP Snap Selected UV Islands** aligns paired symmetrical UV islands.
 
-ICP stands for *Iterative Closest Point*. In this tool, it means OmniMirror uses several matched UV pairs as control points, calculates the translation and rotation needed to align the target island to the mirrored source island, and applies that transform to the selected target island. If **Use Scale** is enabled, it may also apply uniform scale.
+The tool uses matched UV pairs as control points, then moves the target island with translation and rotation. If **Use Scale** is enabled, it may also apply uniform scale.
 
 ### Parameters
 
@@ -107,4 +113,6 @@ ICP stands for *Iterative Closest Point*. In this tool, it means OmniMirror uses
 
 ### Selection Requirements
 
-For ICP Snap, select UV loops from both the source and target islands. OmniMirror needs enough matched selected loops to calculate the transform. Center loops are ignored for this operation, and pairs inside the same UV island are skipped.
+Use ICP Snap for two separate UV islands that represent symmetrical parts of the mesh.
+
+Select UV loops from both the source and target islands. OmniMirror needs matched selected loop pairs across the two islands to calculate the transform. Center loops are ignored for this operation, and pairs inside the same UV island are skipped.
