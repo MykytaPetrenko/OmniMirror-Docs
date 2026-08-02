@@ -160,19 +160,54 @@
 <section id="reviewed-constraints">
 <h3>Reviewed Constraints<a class="headerlink" href="#reviewed-constraints" title="Link to this heading">¶</a></h3>
 <p>The following constraints have been reviewed in the order shown in Blender’s constraint menu:</p>
-<p>| Constraint | Mirrored behavior |
-| — | — |
-| Copy Location | Copied unchanged. |
-| Copy Rotation | Copied unchanged. |
-| Copy Scale | Copied unchanged. |
-| Copy Transforms | Copied unchanged. |
-| Limit Distance | Copied unchanged; it does not need a symmetry-specific range conversion. |
-| Limit Location | The X range is inverted: <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">min_x</span> <span class="pre">=</span> <span class="pre">-source</span> <span class="pre">max_x</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">max_x</span> <span class="pre">=</span> <span class="pre">-source</span> <span class="pre">min_x</span></code>. |
-| Limit Rotation | The X range is copied. The Y and Z ranges are inverted. |
-| Limit Scale | Copied unchanged. |
-| Maintain Volume | Copied unchanged. |
-| Transformation | Location X ranges are inverted; rotation Y and Z ranges are inverted; scale ranges are copied. This applies to both <strong>From</strong> and <strong>To</strong> ranges. |
-| Transform Cache | Not copied. OmniMirror reports a warning. |</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constraint</p></th>
+<th class="head"><p>Mirrored behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Copy Location</p></td>
+<td><p>Copied unchanged.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Copy Rotation</p></td>
+<td><p>Copied unchanged.</p></td>
+</tr>
+<tr class="row-even"><td><p>Copy Scale</p></td>
+<td><p>Copied unchanged.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Copy Transforms</p></td>
+<td><p>Copied unchanged.</p></td>
+</tr>
+<tr class="row-even"><td><p>Limit Distance</p></td>
+<td><p>Copied unchanged; it does not need a symmetry-specific range conversion.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Limit Location</p></td>
+<td><p>The X range is inverted: <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">min_x</span> <span class="pre">=</span> <span class="pre">-source</span> <span class="pre">max_x</span></code> and
+<code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">max_x</span> <span class="pre">=</span> <span class="pre">-source</span> <span class="pre">min_x</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Limit Rotation</p></td>
+<td><p>The X range is copied. The Y and Z ranges are inverted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Limit Scale</p></td>
+<td><p>Copied unchanged.</p></td>
+</tr>
+<tr class="row-even"><td><p>Maintain Volume</p></td>
+<td><p>Copied unchanged.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Transformation</p></td>
+<td><p>Location X ranges are inverted; rotation Y and Z ranges are inverted;
+scale ranges are copied. This applies to both <strong>From</strong> and <strong>To</strong> ranges.</p></td>
+</tr>
+<tr class="row-even"><td><p>Transform Cache</p></td>
+<td><p>Not copied. OmniMirror reports a warning.</p></td>
+</tr>
+</tbody>
+</table>
 <p>Other constraint types are copied with their writable settings and mirrored armature subtargets, but do not yet have reviewed type-specific axis or range conversion.</p>
 </section>
 </section>
