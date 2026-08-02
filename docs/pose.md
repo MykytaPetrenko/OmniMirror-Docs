@@ -42,18 +42,37 @@ Armature subtargets use Blender's standard left/right name flipping. Selecting b
 
 The following constraints have been reviewed in the order shown in Blender's constraint menu:
 
-| Constraint | Mirrored behavior |
-| --- | --- |
-| Copy Location | Copied unchanged. |
-| Copy Rotation | Copied unchanged. |
-| Copy Scale | Copied unchanged. |
-| Copy Transforms | Copied unchanged. |
-| Limit Distance | Copied unchanged; it does not need a symmetry-specific range conversion. |
-| Limit Location | The X range is inverted: `target min_x = -source max_x` and `target max_x = -source min_x`. |
-| Limit Rotation | The X range is copied. The Y and Z ranges are inverted. |
-| Limit Scale | Copied unchanged. |
-| Maintain Volume | Copied unchanged. |
-| Transformation | Location X ranges are inverted; rotation Y and Z ranges are inverted; scale ranges are copied. This applies to both **From** and **To** ranges. |
-| Transform Cache | Not copied. OmniMirror reports a warning. |
+```eval_rst
+.. list-table::
+   :header-rows: 1
+   :widths: 25 75
+
+   * - Constraint
+     - Mirrored behavior
+   * - Copy Location
+     - Copied unchanged.
+   * - Copy Rotation
+     - Copied unchanged.
+   * - Copy Scale
+     - Copied unchanged.
+   * - Copy Transforms
+     - Copied unchanged.
+   * - Limit Distance
+     - Copied unchanged; it does not need a symmetry-specific range conversion.
+   * - Limit Location
+     - The X range is inverted: ``target min_x = -source max_x`` and
+       ``target max_x = -source min_x``.
+   * - Limit Rotation
+     - The X range is copied. The Y and Z ranges are inverted.
+   * - Limit Scale
+     - Copied unchanged.
+   * - Maintain Volume
+     - Copied unchanged.
+   * - Transformation
+     - Location X ranges are inverted; rotation Y and Z ranges are inverted;
+       scale ranges are copied. This applies to both **From** and **To** ranges.
+   * - Transform Cache
+     - Not copied. OmniMirror reports a warning.
+```
 
 Other constraint types are copied with their writable settings and mirrored armature subtargets, but do not yet have reviewed type-specific axis or range conversion.
