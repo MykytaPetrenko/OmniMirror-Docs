@@ -27,13 +27,15 @@ In Blender, open the 3D View sidebar and go to:
 
     The displayed axis changes to match the config. For a character facing negative Y with X as the mirror axis, `+X -> Left | -X -> Right` is usually correct. If the model uses another orientation, choose the mapping that matches the sides recorded when the config was created.
 
-3. **Remove Original** removes the source shape key after the left and right versions are created. Leave it disabled if you want to keep the original combined shape key for comparison or backup.
+3. **Preview Side** controls which split side is shown after splitting. OmniMirror sets the original shape key's value to `0` and gives the chosen left or right split shape key the original value, so you can immediately inspect the transition.
 
-4. **Skip Symmetrical** skips shape keys that already contain left/right indicators such as `.L`, `.R`, `_L`, `_R`, `Left`, or `Right`. This option is enabled by default and is mostly useful for batch processing, where the list may contain both central shape keys and already separated side controls.
+4. **Remove Original** removes the source shape key after the left and right versions are created. Leave it disabled if you want to keep the original combined shape key for comparison or backup.
 
-5. **Falloff** controls the blend distance around the symmetry plane. A value of `0` creates a hard split, while values greater than `0` create a smoother transition near the center line.
+5. **Skip Symmetrical** skips shape keys that already contain left/right indicators such as `.L`, `.R`, `_L`, `_R`, `Left`, or `Right`. This option is enabled by default and is mostly useful for batch processing, where the list may contain both central shape keys and already separated side controls.
 
-6. **Falloff Shape** controls the curve used inside the falloff area.
+6. **Falloff** controls the blend distance around the symmetry plane. A value of `0` creates a hard split, while values greater than `0` create a smoother transition near the center line.
+
+7. **Falloff Shape** controls the curve used inside the falloff area.
     - **`Linear`** uses a direct linear transition.
     - **`Smooth`** uses a smoothstep-style transition and is the default.
     - **`Sharp`** keeps the transition tighter near the center.
@@ -43,7 +45,7 @@ In Blender, open the 3D View sidebar and go to:
 
 Click **Split Active** to split only the currently active shape key.
 
-This is the best option when checking suffix, side mapping, or falloff settings before processing a larger batch.
+After splitting, use Blender's **Adjust Last Operation** popup in the lower-left corner of the 3D View to adjust the operator settings in real time. This is useful for testing the suffix, side mapping, preview side, or falloff before processing a larger batch.
 
 ## Batch Processing
 

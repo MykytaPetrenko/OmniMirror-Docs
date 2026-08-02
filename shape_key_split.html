@@ -151,6 +151,7 @@
 </ul>
 <p>The displayed axis changes to match the config. For a character facing negative Y with X as the mirror axis, <code class="docutils literal notranslate"><span class="pre">+X</span> <span class="pre">-&gt;</span> <span class="pre">Left</span> <span class="pre">|</span> <span class="pre">-X</span> <span class="pre">-&gt;</span> <span class="pre">Right</span></code> is usually correct. If the model uses another orientation, choose the mapping that matches the sides recorded when the config was created.</p>
 </li>
+<li><p><strong>Preview Side</strong> controls which split side is shown after splitting. OmniMirror sets the original shape key’s value to <code class="docutils literal notranslate"><span class="pre">0</span></code> and gives the chosen left or right split shape key the original value, so you can immediately inspect the transition.</p></li>
 <li><p><strong>Remove Original</strong> removes the source shape key after the left and right versions are created. Leave it disabled if you want to keep the original combined shape key for comparison or backup.</p></li>
 <li><p><strong>Skip Symmetrical</strong> skips shape keys that already contain left/right indicators such as <code class="docutils literal notranslate"><span class="pre">.L</span></code>, <code class="docutils literal notranslate"><span class="pre">.R</span></code>, <code class="docutils literal notranslate"><span class="pre">_L</span></code>, <code class="docutils literal notranslate"><span class="pre">_R</span></code>, <code class="docutils literal notranslate"><span class="pre">Left</span></code>, or <code class="docutils literal notranslate"><span class="pre">Right</span></code>. This option is enabled by default and is mostly useful for batch processing, where the list may contain both central shape keys and already separated side controls.</p></li>
 <li><p><strong>Falloff</strong> controls the blend distance around the symmetry plane. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> creates a hard split, while values greater than <code class="docutils literal notranslate"><span class="pre">0</span></code> create a smoother transition near the center line.</p></li>
@@ -167,7 +168,7 @@
 <section id="split-active">
 <h2>Split Active<a class="headerlink" href="#split-active" title="Link to this heading">¶</a></h2>
 <p>Click <strong>Split Active</strong> to split only the currently active shape key.</p>
-<p>This is the best option when checking suffix, side mapping, or falloff settings before processing a larger batch.</p>
+<p>After splitting, use Blender’s <strong>Adjust Last Operation</strong> popup in the lower-left corner of the 3D View to adjust the operator settings in real time. This is useful for testing the suffix, side mapping, preview side, or falloff before processing a larger batch.</p>
 </section>
 <section id="batch-processing">
 <h2>Batch Processing<a class="headerlink" href="#batch-processing" title="Link to this heading">¶</a></h2>
