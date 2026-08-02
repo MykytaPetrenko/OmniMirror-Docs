@@ -1,11 +1,11 @@
 # Workflow
 
-OmniMirror is built around one main idea: create a persistent symmetry configuration while the mesh is still symmetrical, then reuse it later while the topology and vertex order stay unchanged.
+OmniMirror is built around one main idea: create a persistent symmetry config while the mesh is still symmetrical, then reuse it later while the topology and vertex order stay unchanged. The config is saved with the mesh in the `.blend` file.
 
 ## Basic Order
 
 1. Start from a clean symmetrical mesh, usually right after applying the Mirror modifier.
-2. Create a persistent symmetry configuration. See [Persistent Symmetry Configuration](config.md).
+2. Create a persistent symmetry config. See [Persistent Symmetry Config](config.md).
 3. Continue editing the model without changing topology or vertex order.
 4. Use the OmniMirror tools when you need symmetry again.
 
@@ -16,8 +16,9 @@ OmniMirror is built around one main idea: create a persistent symmetry configura
 - Use [Shape Key Symmetrization](shape_key_symmetrization.md) when creating a shape key on one side and symmetrizing the deformation.
 - Use [Shape Key Split](shape_key_split.md) when one shape key affects both sides and you need separate left/right controls.
 - Use [UV Symmetry](uv.md) for UV side preview, selected UV symmetrization, axis snapping, and ICP snapping for paired UV islands.
+- Use [Edge Symmetry](edges.md) to mirror seams and sharp edges.
+- Use [Pose Symmetry](pose.md) to mirror pose transforms and, experimentally, selected-bone constraint stacks.
 
 ## Important Rule
 
 The configuration remains valid only while topology and vertex order remain the same. Moving vertices, editing shape keys, painting weights, and moving UVs are fine. Adding, deleting, merging, splitting, remeshing, or reordering vertices requires a new configuration.
-

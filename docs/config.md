@@ -1,62 +1,60 @@
-# Persistent Symmetry Configuration
-A *persistent symmetry configuration* is a saved map that stores the correspondence between vertex indices on the left and right sides of your mesh. It also marks which vertices belong to the center line (the symmetry plane).
+# Persistent Symmetry Config
 
-Think of it as baking the symmetry information at the right moment, when your mesh is still perfectly or nearly perfectly symmetrical. Later, after you add asymmetrical details, the add-on can still refer back to this saved configuration.
+A persistent symmetry config records which mesh vertices are paired across a mirror axis and which vertices belong to the center line. It lets OmniMirror use the symmetry that existed when the config was created, even after later edits make the mesh visually asymmetrical.
 
-## Mesh Requirements
+The config is stored on the mesh data in the `.blend` file. You do not need a JSON file for normal work in one project. Use **Export JSON** and **Import JSON** only to transfer a config between projects. You can also use **Copy to Selected** to assign the active mesh's config to selected compatible meshes in the same file.
 
-- **Good symmetry.** OmniMirror works best when the symmetry configuration is created while the mesh is still genuinely symmetrical. In a typical workflow, this is right after applying a Mirror modifier, before sculpting, posing, or adding any non-symmetrical details.
-- **No duplicated vertices.** The mesh should not contain duplicated vertices. If multiple vertices occupy the same or almost the same position, the add-on may not know which one is the correct match.
+## Where to Find It
 
-## Symmetry Detection
+In the 3D View sidebar, open:
 
-The configuration process classifies every vertex in the mesh as one of three types:
-- a vertex on the negative side of the symmetry axis;
-- a vertex on the positive side of the symmetry axis;
-- a center vertex lying on the symmetry plane.
+`OmniMirror > Persistent Symmetry Config`
 
-For the configuration to be valid, every vertex must be classified. If at least one vertex cannot be detected as part of a mirrored pair or as a center vertex, the configuration will not work correctly.
+The panel reports whether a config is assigned, its **Symmetry Axis**, and its vertex, pair, and center counts. **Validate Vertex Count** checks whether the active mesh has the same vertex count as its stored config.
 
-During later processing, each vertex is handled according to its classification: negative side, positive side, or center plane.
+## Before You Create One
 
-### Symmetrical Vertex Detection (Positive/Negative Side)
+- Create the config before changing topology or vertex order.
+- Coordinate-based detection works best on a genuinely symmetrical mesh, usually immediately after applying a Mirror modifier.
+- Avoid duplicate vertices in coordinate-based detection: they can make an opposite-side match ambiguous.
 
-To find symmetrical vertices, OmniMirror takes a vertex from one side of the mesh, mirrors its position across the selected symmetry axis, and searches for the best matching vertex on the opposite side.
+After creation, moving vertices, editing shape keys, painting weights, changing UVs, and marking seams or sharp edges are fine. Adding, deleting, merging, splitting, remeshing, or reordering vertices requires a new config.
 
-The add-on supports two threshold modes for this detection:
+## Create Config
 
-- **Absolute threshold** uses a fixed object-space distance. A mirrored vertex must be found within that distance.
-- **Relative threshold (recommended)** uses a distance based on the local mesh density. The threshold is calculated from the shortest edge connected to the vertex, which makes detection less sensitive to differences in mesh scale or density.
+Open **Create Config**, choose the **Mirror Axis**, then use either **Coordinate Based** or **Topology Based**.
 
-In most cases, you should not need to change the default values if you create the configuration immediately after applying a Mirror modifier.
+### Coordinate Based
 
-### Center Vertex Detection
+**Coordinate Based** finds a pair by reflecting a vertex across the chosen axis and looking for the best opposite-side match. Vertices close to the mirror plane become center vertices.
 
-If a vertex does not have a mirrored counterpart, OmniMirror checks whether it is close enough to the symmetry plane. If it is within the center detection threshold, it is marked as a center vertex.
+- **Symmetry Threshold** controls paired-vertex detection.
+- **Center Threshold** controls center-vertex detection.
+- Set each threshold **Type** to **Absolute** for an object-space distance or **Relative To Min Edge** for a percentage of the vertex's shortest connected edge. Relative is usually the safer default across different mesh scales.
+- Click **Create Config from Coordinates** to save the config on the active mesh.
 
-The add-on supports the same two threshold modes for center detection.
+Use the **Troubleshooting Tools** before creating a final config:
 
-Center vertices are important because they do not have left/right partners.
+- **Select Center** shows the vertices detected on the mirror plane.
+- **Select Unassigned** shows vertices that cannot be paired or classified as center vertices.
 
+If vertices are unassigned, adjust the thresholds, remove duplicates, or create the config earlier in the workflow. A config can retain unassigned vertices, but operations cannot mirror those vertices directly.
 
-### Trouble Detection (Highly recommended)
+### Topology Based
 
-OmniMirror includes helper operators for checking whether the configuration can be created correctly:
+**Topology Based** finds pairs by propagating through connected mesh topology from a known center. It does not use absolute vertex positions to find the pairs, so it can be useful when the mesh has small asymmetrical changes but its main connected structure is still symmetrical.
 
-- **Select Center Vertices** selects all vertices detected as belonging to the symmetry plane.
-- **Select Unassigned Vertices** selects vertices that could not be clearly classified.
+This is not intended to solve a completely asymmetrical character. It can help with partial asymmetry on an otherwise symmetrical mesh. It also cannot establish pairs for separate elements, such as independent left and right eye objects or disconnected eye islands: the pairing must propagate from the center through connected topology.
 
-It is highly recommended to run these helper operators before creating a persistent symmetry configuration.
+Choose how to define the center:
 
-If `Select Unassigned Vertices` finds anything, the mesh is not ready for a valid configuration yet. You may need to adjust the detection thresholds, clean duplicated vertices, or create the configuration earlier in the workflow while the mesh is still perfectly symmetrical.
+- **Use Selection**: in Edit Mode, select one or more center edges, then click **Create Config from Topology**.
+- **Use VG**: choose a **Center Vertex Group** whose weighted vertices define the center, then click **Create Config from Topology**. Optionally choose an **Unassigned Vertex Group** to exclude vertices that should not be matched.
 
-## Creating a Configuration File
+## Transfer a Config
 
-When you create a symmetry configuration, OmniMirror saves the result as a JSON file. This file stores the symmetry information for the mesh: which vertex indices are paired across the mirror axis, and which vertex indices belong to the center line.
+- **Export JSON** writes the active mesh's config to a JSON file.
+- **Import JSON** reads a compatible JSON config and stores it on the active mesh.
+- **Copy to Selected** copies the active mesh's config to the other selected meshes. Those meshes must have a matching vertex count and compatible topology and vertex order.
 
-### Topology and Vertex Order
-
-✅ The configuration is based on **vertex order**. 
-That means the same configuration file can be reused on any model that has the exact same topology and the exact same vertex order. The mesh can have different shape key values, different vertex group weights, different UV positions, or non-symmetrical edits, but the underlying vertex indices must still match.
-
-❌ If the topology changes, the configuration is no longer reliable. Adding vertices, deleting vertices, merging vertices, splitting edges, remeshing, or doing anything else that changes vertex order can make the saved configuration invalid.
+JSON transfer does not remove the normal in-file storage: once imported, the config is again saved with the mesh in the `.blend` file.
