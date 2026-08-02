@@ -63,12 +63,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vertex_group.html">Vertex Group Symmetrization</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Shape Key Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_split.html">Shape Key Split</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv.html">UV Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edges.html">Edge Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pose.html">Pose Symmetry</a></li>
 </ul>
 
     </nav>
@@ -123,7 +125,7 @@
     <section id="shape-key-symmetrization">
 <h1>Shape Key Symmetrization<a class="headerlink" href="#shape-key-symmetrization" title="Link to this heading">¶</a></h1>
 <p>Shape key symmetrization uses the persistent symmetry configuration to process shape key coordinates.</p>
-<p>Before using these tools, make sure the <strong>Config File</strong> field in the <strong>Persistent Symmetry Config</strong> section points to a compatible configuration JSON file.</p>
+<p>Before using these tools, make sure the active mesh has a compatible config in <strong>Persistent Symmetry Config</strong>.</p>
 <section id="where-to-find-it">
 <h2>Where to Find It<a class="headerlink" href="#where-to-find-it" title="Link to this heading">¶</a></h2>
 <p>In Blender, open the 3D View sidebar and go to:</p>
@@ -131,7 +133,7 @@
 </section>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
-<ol class="simple">
+<ol>
 <li><p><strong>Data</strong> controls what is symmetrized.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Delta</span> <span class="pre">(Recommended)</span></code> symmetrizes the offset from the shape key’s <strong>Relative To</strong> target. This is usually the safest and most useful mode. For example, if a shape key raises only the right eyebrow, Delta mode can copy that change to the left side without requiring the current basis mesh to be perfectly symmetrical.</p></li>
@@ -145,14 +147,15 @@
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">Auto</span></code></strong> tries to use paired processing when a matching left/right counterpart exists. If no counterpart is found, it falls back to single shape key processing. <code class="docutils literal notranslate"><span class="pre">Auto</span></code> is a good default for batch processing mixed shape key lists.</p></li>
 </ul>
 </li>
-<li><p><strong>Single Flow</strong> (very similar to Flow parameter from Base Mesh block) is used when a shape key is processed as a single shape key. The positive and negative sides come from the saved symmetry configuration.</p>
+<li><p><strong>Single Flow</strong> (similar to <strong>Flow</strong> in <strong>Basis Mesh</strong>) is used when a shape key is processed as a single shape key. The axis labels come from the saved symmetry config.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Average</span></code> averages the mirrored deltas or coordinates between both sides.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Forward</span></code> copies from the negative side to the positive side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Reverse</span></code> copies from the positive side to the negative side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">-&gt;</span> <span class="pre">+X</span></code> copies from the negative axis side to the positive axis side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+X</span> <span class="pre">-&gt;</span> <span class="pre">-X</span></code> copies from the positive axis side to the negative axis side.</p></li>
 </ul>
+<p>The displayed axis changes to match the config. Its direction is fixed by the sides recorded at config creation, not by the mesh’s current visible position.</p>
 </li>
-<li><p><strong>Pair Flow</strong> is used when a shape key is processed together with a left/right counterpart. For paired shape keys, the direction is based on the shape key names, not on the positive/negative side from the persistent symmetry configuration.</p>
+<li><p><strong>Pair Flow</strong> is used when a shape key is processed together with a left/right counterpart. For paired shape keys, the direction is based on the shape key names, not on the config’s <code class="docutils literal notranslate"><span class="pre">-axis</span></code> and <code class="docutils literal notranslate"><span class="pre">+axis</span></code> sides.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Average</span></code> averages the paired shape keys.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Left</span> <span class="pre">-&gt;</span> <span class="pre">Right</span></code> copies the left-named shape key to the right-named shape key.</p></li>

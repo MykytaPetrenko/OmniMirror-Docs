@@ -2,7 +2,7 @@
 
 UV tools use the persistent symmetry configuration to find matching UV loops through the mesh topology. The tools do not guess symmetry only from the current UV layout. They use the saved vertex pairs from the config, then apply that information to selected UVs.
 
-Before using these tools, make sure the **Config File** field in the UV Editor's **OmniMirror** panel points to a compatible configuration JSON file. The mesh must be in **Edit Mode**, and the object must have an active UV layer.
+Before using these tools, make sure the active mesh has a compatible config. The mesh must be in **Edit Mode**, and the object must have an active UV layer.
 
 ## Where to Find It
 
@@ -68,8 +68,10 @@ The **Symmetrize** tool processes selected UV loops. A UV loop is processed only
 
 1. **Mode** controls how selected symmetrical UV pairs are processed.
     - **`Average`** averages paired UVs symmetrically around the configured UV axis.
-    - **`Forward`** copies UVs from the negative side to the matching positive side.
-    - **`Reverse`** copies UVs from the positive side to the matching negative side.
+    - **`-X -> +X`** copies UVs from the config's negative axis side to the matching positive axis side.
+    - **`+X -> -X`** copies UVs from the config's positive axis side to the matching negative axis side.
+
+    The displayed axis changes to match the config. Its direction is fixed by the sides recorded at config creation, not by the mesh's current visible position.
 
 2. **Force Center To Axis** moves detected center UV loops onto the configured UV axis. This is enabled by default and is useful for keeping center seams aligned.
 
@@ -106,8 +108,8 @@ The tool uses matched UV pairs as control points, then moves the target island w
 ### Parameters
 
 1. **Direction** controls which side stays fixed and which side is moved.
-    - **`Forward`** keeps the negative side fixed and snaps the positive side.
-    - **`Reverse`** keeps the positive side fixed and snaps the negative side.
+    - **`-X -> +X`** keeps the negative axis side fixed and snaps the positive axis side.
+    - **`+X -> -X`** keeps the positive axis side fixed and snaps the negative axis side.
 
 2. **Use Scale** allows ICP snapping to apply uniform scale in addition to translation and rotation. Leave it disabled if the island size should stay unchanged.
 

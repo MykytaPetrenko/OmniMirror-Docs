@@ -20,8 +20,10 @@ Once the configuration is saved, you can use it to symmetrize:
 - Shape keys
 - Vertex groups
 - UV maps
+- Seams and sharp edges
+- Pose bones
 
-All of these operations are based on the original symmetry, not on the messy positions vertices may have drifted to later.
+Mesh-based operations are based on the original symmetry, not on the messy positions vertices may have drifted to later. Pose symmetry uses Blender left/right bone naming and does not require a mesh config.
 
 ## Limitations
 

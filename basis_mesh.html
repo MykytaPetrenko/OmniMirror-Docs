@@ -16,7 +16,7 @@
             <link rel="search" title="Search" href="search.html" />
             <link rel="top" title="OmniMirror 1.0.0 documentation" href="#" />
             <link rel="next" title="Vertex Group Symmetrization" href="vertex_group.html" />
-            <link rel="prev" title="Persistent Symmetry Configuration" href="config.html" />
+            <link rel="prev" title="Persistent Symmetry Config" href="config.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -63,12 +63,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Config</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Basis Mesh Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vertex_group.html">Vertex Group Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_symmetrization.html">Shape Key Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_split.html">Shape Key Split</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv.html">UV Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edges.html">Edge Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pose.html">Pose Symmetry</a></li>
 </ul>
 
     </nav>
@@ -122,8 +124,8 @@
                         <main role="main" id="main">
     <section id="basis-mesh-symmetrization">
 <h1>Basis Mesh Symmetrization<a class="headerlink" href="#basis-mesh-symmetrization" title="Link to this heading">¶</a></h1>
-<p>Basis mesh symmetrization changes the actual vertex coordinates of the active mesh. It uses the selected persistent symmetry configuration to decide which vertices are paired and which vertices belong to the center line.</p>
-<p>Before using this tool, make sure the <strong>Config File</strong> field in the <strong>Persistent Symmetry Config</strong> section points to a valid configuration JSON file. The active mesh must have the same topology and vertex order as the mesh used to create that configuration.</p>
+<p>Basis mesh symmetrization changes the actual vertex coordinates of the active mesh. It uses the mesh’s persistent symmetry config to decide which vertices are paired and which vertices belong to the center line.</p>
+<p>Before using this tool, make sure the active mesh has a valid config in <strong>Persistent Symmetry Config</strong>. The active mesh must have the same topology and vertex order as when the config was created.</p>
 <section id="where-to-find-it">
 <h2>Where to Find It<a class="headerlink" href="#where-to-find-it" title="Link to this heading">¶</a></h2>
 <p>In Blender, open the 3D View sidebar and go to:</p>
@@ -142,16 +144,16 @@
 <p>The <strong>Flow</strong> parameter controls how paired vertices are processed.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Average</span></code> finds the midpoint between each mirrored vertex pair and places both vertices symmetrically around the selected axis.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Forward</span></code> copies vertex coordinates from the negative side of the symmetry configuration to the positive side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Reverse</span></code> copies vertex coordinates from the positive side of the symmetry configuration to the negative side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">-&gt;</span> <span class="pre">+X</span></code> copies vertex coordinates from the negative X side of the config to the positive X side. The axis letter changes to match the config’s <strong>Symmetry Axis</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+X</span> <span class="pre">-&gt;</span> <span class="pre">-X</span></code> copies vertex coordinates from the positive X side of the config to the negative X side. The axis letter changes to match the config’s <strong>Symmetry Axis</strong>.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">Forward</span></code> and <code class="docutils literal notranslate"><span class="pre">Reverse</span></code> flows depend on the saved configuration, not on the current visible position of the mesh. They use the positive and negative sides stored in the configuration.</p>
+<p>The directional flow is defined by the sides recorded when the config was created, not by the mesh’s current visible position. Read the labels as the configured negative and positive axis sides, rather than assuming they always mean visual left and right.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>To avoid confusion, it is best not to rotate the mesh unnecessarily after creating the configuration. If your character faces the negative Y direction and the mirror axis is X, the usual interpretation is:
-- <strong>Forward</strong> copies from the right side to the left side.
-- <strong>Reverse</strong> copies from the left side to the right side.</p>
-<p>If your model uses a different orientation, think in terms of the saved positive and negative sides rather than visual left and right.</p>
+<p>To avoid confusion, do not rotate the mesh unnecessarily after creating the config. If your character faces negative Y and the mirror axis is X, the usual interpretation is:
+- <strong>-X -&gt; +X</strong> copies from the right side to the left side.
+- <strong>+X -&gt; -X</strong> copies from the left side to the right side.</p>
+<p>For another orientation, follow the axis labels rather than visual left and right.</p>
 </div>
 </section>
 <section id="save-original-as-shape-key">
@@ -165,7 +167,7 @@
 <p>Click <strong>Symmetrize</strong> to apply the selected mode to the active mesh.</p>
 <p>OmniMirror will:</p>
 <ol class="simple">
-<li><p>Load the selected configuration file.</p></li>
+<li><p>Load the config stored on the active mesh.</p></li>
 <li><p>Validate that the active mesh has a compatible vertex count.</p></li>
 <li><p>Process all mirrored vertex pairs.</p></li>
 <li><p>Force center vertices onto the selected symmetry axis.</p></li>
@@ -177,7 +179,7 @@
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
     <a class="float-left" href="config.html" title="Previous">
-        <span aria-hidden="true">←&nbsp;</span>Persistent Symmetry Configuration
+        <span aria-hidden="true">←&nbsp;</span>Persistent Symmetry Config
     </a>
     <a class="float-right" href="vertex_group.html" title="Next">
         Vertex Group Symmetrization <span aria-hidden="true">&nbsp;→</span>

@@ -63,12 +63,14 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vertex_group.html">Vertex Group Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_symmetrization.html">Shape Key Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_split.html">Shape Key Split</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv.html">UV Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edges.html">Edge Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pose.html">Pose Symmetry</a></li>
 </ul>
 
     </nav>
@@ -138,8 +140,10 @@
 <li><p>Shape keys</p></li>
 <li><p>Vertex groups</p></li>
 <li><p>UV maps</p></li>
+<li><p>Seams and sharp edges</p></li>
+<li><p>Pose bones</p></li>
 </ul>
-<p>All of these operations are based on the original symmetry, not on the messy positions vertices may have drifted to later.</p>
+<p>Mesh-based operations are based on the original symmetry, not on the messy positions vertices may have drifted to later. Pose symmetry uses Blender left/right bone naming and does not require a mesh config.</p>
 </section>
 <section id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">¶</a></h2>

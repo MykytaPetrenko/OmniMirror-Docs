@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Persistent Symmetry Config &mdash; OmniMirror 1.0.0 documentation</title>
+        <title>Pose Symmetry &mdash; OmniMirror 1.0.0 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
@@ -15,8 +15,7 @@
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
             <link rel="top" title="OmniMirror 1.0.0 documentation" href="#" />
-            <link rel="next" title="Basis Mesh Symmetrization" href="basis_mesh.html" />
-            <link rel="prev" title="Workflow" href="workflow.html" />
+            <link rel="prev" title="Edge Symmetry" href="edges.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -63,14 +62,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Persistent Symmetry Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vertex_group.html">Vertex Group Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_symmetrization.html">Shape Key Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_split.html">Shape Key Split</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv.html">UV Symmetry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges.html">Edge Symmetry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pose.html">Pose Symmetry</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pose Symmetry</a></li>
 </ul>
 
     </nav>
@@ -91,7 +90,7 @@
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
         <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Persistent Symmetry Config</li>
+        <li class="breadcrumb-item active" aria-current="page">Pose Symmetry</li>
     </ol>
 </nav>
                     </div>
@@ -103,11 +102,11 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/config.md" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/MykytaPetrenko/OmniMirror-Docs/tree/main/docs/pose.md" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
-    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/config.md.txt" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/pose.md.txt" rel="nofollow">
         <span class="btn-icon"><span class="fas fa-code"></span></span>
         <span class="btn-text">View source</span>
     </a>
@@ -122,73 +121,45 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="persistent-symmetry-config">
-<h1>Persistent Symmetry Config<a class="headerlink" href="#persistent-symmetry-config" title="Link to this heading">¶</a></h1>
-<p>A persistent symmetry config records which mesh vertices are paired across a mirror axis and which vertices belong to the center line. It lets OmniMirror use the symmetry that existed when the config was created, even after later edits make the mesh visually asymmetrical.</p>
-<p>The config is stored on the mesh data in the <code class="docutils literal notranslate"><span class="pre">.blend</span></code> file. You do not need a JSON file for normal work in one project. Use <strong>Export JSON</strong> and <strong>Import JSON</strong> only to transfer a config between projects. You can also use <strong>Copy to Selected</strong> to assign the active mesh’s config to selected compatible meshes in the same file.</p>
+    <section id="pose-symmetry">
+<h1>Pose Symmetry<a class="headerlink" href="#pose-symmetry" title="Link to this heading">¶</a></h1>
+<p>Pose symmetry mirrors pose-bone transforms from Blender-style left/right bone names. It works on an active armature in <strong>Pose Mode</strong> and does not require a mesh config.</p>
 <section id="where-to-find-it">
 <h2>Where to Find It<a class="headerlink" href="#where-to-find-it" title="Link to this heading">¶</a></h2>
 <p>In the 3D View sidebar, open:</p>
-<p><code class="docutils literal notranslate"><span class="pre">OmniMirror</span> <span class="pre">&gt;</span> <span class="pre">Persistent</span> <span class="pre">Symmetry</span> <span class="pre">Config</span></code></p>
-<p>The panel reports whether a config is assigned, its <strong>Symmetry Axis</strong>, and its vertex, pair, and center counts. <strong>Validate Vertex Count</strong> checks whether the active mesh has the same vertex count as its stored config.</p>
+<p><code class="docutils literal notranslate"><span class="pre">OmniMirror</span> <span class="pre">&gt;</span> <span class="pre">Pose</span></code></p>
 </section>
-<section id="before-you-create-one">
-<h2>Before You Create One<a class="headerlink" href="#before-you-create-one" title="Link to this heading">¶</a></h2>
+<section id="pose-transforms">
+<h2>Pose Transforms<a class="headerlink" href="#pose-transforms" title="Link to this heading">¶</a></h2>
+<p>Under <strong>All Bones:</strong>, set <strong>Flow</strong> and <strong>Influence</strong>, then click <strong>Symmetrize All Bones</strong>.</p>
 <ul class="simple">
-<li><p>Create the config before changing topology or vertex order.</p></li>
-<li><p>Coordinate-based detection works best on a genuinely symmetrical mesh, usually immediately after applying a Mirror modifier.</p></li>
-<li><p>Avoid duplicate vertices in coordinate-based detection: they can make an opposite-side match ambiguous.</p></li>
+<li><p><strong>Average</strong> averages each left/right pose pair.</p></li>
+<li><p><strong>Left -&gt; Right</strong> copies the left pose to the right bone.</p></li>
+<li><p><strong>Right -&gt; Left</strong> copies the right pose to the left bone.</p></li>
+<li><p><strong>Influence</strong> blends the current target pose toward the mirrored result. At <code class="docutils literal notranslate"><span class="pre">1.0</span></code>, the mirrored result is applied fully.</p></li>
 </ul>
-<p>After creation, moving vertices, editing shape keys, painting weights, changing UVs, and marking seams or sharp edges are fine. Adding, deleting, merging, splitting, remeshing, or reordering vertices requires a new config.</p>
+<p>Under <strong>Selected Bones:</strong>, select one or more source bones and use:</p>
+<ul class="simple">
+<li><p><strong>From Selected</strong> to copy selected bones to their mirrored counterparts.</p></li>
+<li><p><strong>To Selected</strong> to copy each counterpart to the selected bone.</p></li>
+</ul>
+<p>If both bones of a pair are selected, the transform action averages that pair. Bones without a Blender-recognized left/right counterpart are skipped.</p>
 </section>
-<section id="create-config">
-<h2>Create Config<a class="headerlink" href="#create-config" title="Link to this heading">¶</a></h2>
-<p>Open <strong>Create Config</strong>, choose the <strong>Mirror Axis</strong>, then use either <strong>Coordinate Based</strong> or <strong>Topology Based</strong>.</p>
-<section id="coordinate-based">
-<h3>Coordinate Based<a class="headerlink" href="#coordinate-based" title="Link to this heading">¶</a></h3>
-<p><strong>Coordinate Based</strong> finds a pair by reflecting a vertex across the chosen axis and looking for the best opposite-side match. Vertices close to the mirror plane become center vertices.</p>
+<section id="constraints-experimental">
+<h2>Constraints (Experimental)<a class="headerlink" href="#constraints-experimental" title="Link to this heading">¶</a></h2>
+<p>The <strong>Constraints:</strong> actions mirror the constraint stack for selected source bones:</p>
 <ul class="simple">
-<li><p><strong>Symmetry Threshold</strong> controls paired-vertex detection.</p></li>
-<li><p><strong>Center Threshold</strong> controls center-vertex detection.</p></li>
-<li><p>Set each threshold <strong>Type</strong> to <strong>Absolute</strong> for an object-space distance or <strong>Relative To Min Edge</strong> for a percentage of the vertex’s shortest connected edge. Relative is usually the safer default across different mesh scales.</p></li>
-<li><p>Click <strong>Create Config from Coordinates</strong> to save the config on the active mesh.</p></li>
+<li><p><strong>From Selected</strong> replaces the counterpart bone’s entire constraint stack with mirrored copies of the selected bone’s stack.</p></li>
+<li><p><strong>To Selected</strong> replaces the selected bone’s entire constraint stack with mirrored copies of its counterpart’s stack.</p></li>
 </ul>
-<p>Use the <strong>Troubleshooting Tools</strong> before creating a final config:</p>
-<ul class="simple">
-<li><p><strong>Select Center</strong> shows the vertices detected on the mirror plane.</p></li>
-<li><p><strong>Select Unassigned</strong> shows vertices that cannot be paired or classified as center vertices.</p></li>
-</ul>
-<p>If vertices are unassigned, adjust the thresholds, remove duplicates, or create the config earlier in the workflow. A config can retain unassigned vertices, but operations cannot mirror those vertices directly.</p>
-</section>
-<section id="topology-based">
-<h3>Topology Based<a class="headerlink" href="#topology-based" title="Link to this heading">¶</a></h3>
-<p><strong>Topology Based</strong> finds pairs by propagating through connected mesh topology from a known center. It does not use absolute vertex positions to find the pairs, so it can be useful when the mesh has small asymmetrical changes but its main connected structure is still symmetrical.</p>
-<p>This is not intended to solve a completely asymmetrical character. It can help with partial asymmetry on an otherwise symmetrical mesh. It also cannot establish pairs for separate elements, such as independent left and right eye objects or disconnected eye islands: the pairing must propagate from the center through connected topology.</p>
-<p>Choose how to define the center:</p>
-<ul class="simple">
-<li><p><strong>Use Selection</strong>: in Edit Mode, select one or more center edges, then click <strong>Create Config from Topology</strong>.</p></li>
-<li><p><strong>Use VG</strong>: choose a <strong>Center Vertex Group</strong> whose weighted vertices define the center, then click <strong>Create Config from Topology</strong>. Optionally choose an <strong>Unassigned Vertex Group</strong> to exclude vertices that should not be matched.</p></li>
-</ul>
-</section>
-</section>
-<section id="transfer-a-config">
-<h2>Transfer a Config<a class="headerlink" href="#transfer-a-config" title="Link to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><strong>Export JSON</strong> writes the active mesh’s config to a JSON file.</p></li>
-<li><p><strong>Import JSON</strong> reads a compatible JSON config and stores it on the active mesh.</p></li>
-<li><p><strong>Copy to Selected</strong> copies the active mesh’s config to the other selected meshes. Those meshes must have a matching vertex count and compatible topology and vertex order.</p></li>
-</ul>
-<p>JSON transfer does not remove the normal in-file storage: once imported, the config is again saved with the mesh in the <code class="docutils literal notranslate"><span class="pre">.blend</span></code> file.</p>
+<p>This feature is experimental. It mirrors armature subtargets that use standard left/right naming and applies specific range conversion for common limit and transformation constraints. Review the result before relying on complex constraint setups. <strong>Transform Cache</strong> constraints are skipped, and selecting both bones of a pair skips that pair.</p>
 </section>
 </section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-left" href="workflow.html" title="Previous">
-        <span aria-hidden="true">←&nbsp;</span>Workflow
-    </a>
-    <a class="float-right" href="basis_mesh.html" title="Next">
-        Basis Mesh Symmetrization <span aria-hidden="true">&nbsp;→</span>
+    <a class="float-left" href="edges.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Edge Symmetry
     </a>
 </nav>
                     </div>
@@ -197,15 +168,10 @@
                         <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
                             <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
                             <ul>
-<li><a class="reference internal" href="#">Persistent Symmetry Config</a><ul>
+<li><a class="reference internal" href="#">Pose Symmetry</a><ul>
 <li><a class="reference internal" href="#where-to-find-it">Where to Find It</a></li>
-<li><a class="reference internal" href="#before-you-create-one">Before You Create One</a></li>
-<li><a class="reference internal" href="#create-config">Create Config</a><ul>
-<li><a class="reference internal" href="#coordinate-based">Coordinate Based</a></li>
-<li><a class="reference internal" href="#topology-based">Topology Based</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#transfer-a-config">Transfer a Config</a></li>
+<li><a class="reference internal" href="#pose-transforms">Pose Transforms</a></li>
+<li><a class="reference internal" href="#constraints-experimental">Constraints (Experimental)</a></li>
 </ul>
 </li>
 </ul>

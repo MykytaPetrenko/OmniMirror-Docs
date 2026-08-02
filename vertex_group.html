@@ -63,12 +63,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Vertex Group Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_symmetrization.html">Shape Key Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_split.html">Shape Key Split</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv.html">UV Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edges.html">Edge Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pose.html">Pose Symmetry</a></li>
 </ul>
 
     </nav>
@@ -123,7 +125,7 @@
     <section id="vertex-group-symmetrization">
 <h1>Vertex Group Symmetrization<a class="headerlink" href="#vertex-group-symmetrization" title="Link to this heading">¶</a></h1>
 <p>Vertex group symmetrization uses the persistent symmetry configuration to process vertex weights.</p>
-<p>Before using this tool, make sure the <strong>Config File</strong> field in the <strong>Persistent Symmetry Config</strong> section points to a compatible configuration JSON file.</p>
+<p>Before using this tool, make sure the active mesh has a compatible config in <strong>Persistent Symmetry Config</strong>.</p>
 <section id="where-to-find-it">
 <h2>Where to Find It<a class="headerlink" href="#where-to-find-it" title="Link to this heading">¶</a></h2>
 <p>In Blender, open the 3D View sidebar and go to:</p>
@@ -131,7 +133,7 @@
 </section>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
-<ol class="simple">
+<ol>
 <li><p><strong>Type</strong> controls how vertex groups are matched before processing.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">Single</span></code></strong> treats each vertex group as a standalone group. Weights are symmetrized within the same vertex group.</p></li>
@@ -139,14 +141,15 @@
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">Auto</span></code></strong> uses paired processing for side-named vertex groups and single-group processing for the rest. <code class="docutils literal notranslate"><span class="pre">Auto</span></code> is a good default for batch processing mixed vertex group lists.</p></li>
 </ul>
 </li>
-<li><p><strong>Single Flow</strong> is used when a vertex group is processed as a single group. The positive and negative sides come from the saved symmetry configuration.</p>
+<li><p><strong>Single Flow</strong> is used when a vertex group is processed as a single group. The axis labels come from the saved symmetry config.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">Average</span></code></strong> averages the mirrored weights between both sides.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Forward</span></code></strong> copies weights from the negative side to the positive side.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Reverse</span></code></strong> copies weights from the positive side to the negative side.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">-&gt;</span> <span class="pre">+X</span></code></strong> copies weights from the config’s negative axis side to its positive axis side.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">+X</span> <span class="pre">-&gt;</span> <span class="pre">-X</span></code></strong> copies weights from the config’s positive axis side to its negative axis side.</p></li>
 </ul>
+<p>The displayed axis changes to match the config. Its direction is fixed by the sides recorded at config creation, not by the mesh’s current visible position.</p>
 </li>
-<li><p><strong>Pair Flow</strong> is used when a vertex group is processed together with a left/right counterpart. For paired vertex groups, <code class="docutils literal notranslate"><span class="pre">Left</span> <span class="pre">-&gt;</span> <span class="pre">Right</span></code> and <code class="docutils literal notranslate"><span class="pre">Right</span> <span class="pre">-&gt;</span> <span class="pre">Left</span></code> are based on the vertex group names, not on the positive/negative side from the persistent symmetry configuration.</p>
+<li><p><strong>Pair Flow</strong> is used when a vertex group is processed together with a left/right counterpart. For paired vertex groups, <code class="docutils literal notranslate"><span class="pre">Left</span> <span class="pre">-&gt;</span> <span class="pre">Right</span></code> and <code class="docutils literal notranslate"><span class="pre">Right</span> <span class="pre">-&gt;</span> <span class="pre">Left</span></code> are based on the vertex group names, not on the config’s <code class="docutils literal notranslate"><span class="pre">-axis</span></code> and <code class="docutils literal notranslate"><span class="pre">+axis</span></code> sides.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">Average</span></code></strong> averages the paired vertex group weights.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">Left</span> <span class="pre">-&gt;</span> <span class="pre">Right</span></code></strong> copies the left-named vertex group to the right-named vertex group.</p></li>

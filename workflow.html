@@ -15,7 +15,7 @@
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
             <link rel="top" title="OmniMirror 1.0.0 documentation" href="#" />
-            <link rel="next" title="Persistent Symmetry Configuration" href="config.html" />
+            <link rel="next" title="Persistent Symmetry Config" href="config.html" />
             <link rel="prev" title="About" href="about.html" />
     </head>
 <body>
@@ -63,12 +63,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Persistent Symmetry Config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_mesh.html">Basis Mesh Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vertex_group.html">Vertex Group Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_symmetrization.html">Shape Key Symmetrization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shape_key_split.html">Shape Key Split</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv.html">UV Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edges.html">Edge Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pose.html">Pose Symmetry</a></li>
 </ul>
 
     </nav>
@@ -122,12 +124,12 @@
                         <main role="main" id="main">
     <section id="workflow">
 <h1>Workflow<a class="headerlink" href="#workflow" title="Link to this heading">¶</a></h1>
-<p>OmniMirror is built around one main idea: create a persistent symmetry configuration while the mesh is still symmetrical, then reuse it later while the topology and vertex order stay unchanged.</p>
+<p>OmniMirror is built around one main idea: create a persistent symmetry config while the mesh is still symmetrical, then reuse it later while the topology and vertex order stay unchanged. The config is saved with the mesh in the <code class="docutils literal notranslate"><span class="pre">.blend</span></code> file.</p>
 <section id="basic-order">
 <h2>Basic Order<a class="headerlink" href="#basic-order" title="Link to this heading">¶</a></h2>
 <ol class="simple">
 <li><p>Start from a clean symmetrical mesh, usually right after applying the Mirror modifier.</p></li>
-<li><p>Create a persistent symmetry configuration. See <a class="reference internal" href="config.html"><span class="doc">Persistent Symmetry Configuration</span></a>.</p></li>
+<li><p>Create a persistent symmetry config. See <a class="reference internal" href="config.html"><span class="doc">Persistent Symmetry Config</span></a>.</p></li>
 <li><p>Continue editing the model without changing topology or vertex order.</p></li>
 <li><p>Use the OmniMirror tools when you need symmetry again.</p></li>
 </ol>
@@ -140,6 +142,8 @@
 <li><p>Use <a class="reference internal" href="shape_key_symmetrization.html"><span class="doc">Shape Key Symmetrization</span></a> when creating a shape key on one side and symmetrizing the deformation.</p></li>
 <li><p>Use <a class="reference internal" href="shape_key_split.html"><span class="doc">Shape Key Split</span></a> when one shape key affects both sides and you need separate left/right controls.</p></li>
 <li><p>Use <a class="reference internal" href="uv.html"><span class="doc">UV Symmetry</span></a> for UV side preview, selected UV symmetrization, axis snapping, and ICP snapping for paired UV islands.</p></li>
+<li><p>Use <a class="reference internal" href="edges.html"><span class="doc">Edge Symmetry</span></a> to mirror seams and sharp edges.</p></li>
+<li><p>Use <a class="reference internal" href="pose.html"><span class="doc">Pose Symmetry</span></a> to mirror pose transforms and, experimentally, selected-bone constraint stacks.</p></li>
 </ul>
 </section>
 <section id="important-rule">
@@ -154,7 +158,7 @@
         <span aria-hidden="true">←&nbsp;</span>About
     </a>
     <a class="float-right" href="config.html" title="Next">
-        Persistent Symmetry Configuration <span aria-hidden="true">&nbsp;→</span>
+        Persistent Symmetry Config <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>

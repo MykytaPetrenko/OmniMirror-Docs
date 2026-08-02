@@ -15,3 +15,5 @@ Welcome to OmniMirror Docs!
    shape_key_symmetrization.md
    shape_key_split.md
    uv.md
+   edges.md
+   pose.md
