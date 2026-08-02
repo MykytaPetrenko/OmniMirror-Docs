@@ -31,4 +31,29 @@ The **Constraints:** actions mirror the constraint stack for selected source bon
 - **From Selected** replaces the counterpart bone's entire constraint stack with mirrored copies of the selected bone's stack.
 - **To Selected** replaces the selected bone's entire constraint stack with mirrored copies of its counterpart's stack.
 
-This feature is experimental. It mirrors armature subtargets that use standard left/right naming and applies specific range conversion for common limit and transformation constraints. Review the result before relying on complex constraint setups. **Transform Cache** constraints are skipped, and selecting both bones of a pair skips that pair.
+Armature subtargets use Blender's standard left/right name flipping. Selecting both bones of a pair skips that pair.
+
+```eval_rst
+.. important::
+    Constraint symmetrization is experimental and replaces the target bone's entire constraint stack. Review the result before relying on a complex rig.
+```
+
+### Reviewed Constraints
+
+The following constraints have been reviewed in the order shown in Blender's constraint menu:
+
+| Constraint | Mirrored behavior |
+| --- | --- |
+| Copy Location | Copied unchanged. |
+| Copy Rotation | Copied unchanged. |
+| Copy Scale | Copied unchanged. |
+| Copy Transforms | Copied unchanged. |
+| Limit Distance | Copied unchanged; it does not need a symmetry-specific range conversion. |
+| Limit Location | The X range is inverted: `target min_x = -source max_x` and `target max_x = -source min_x`. |
+| Limit Rotation | The X range is copied. The Y and Z ranges are inverted. |
+| Limit Scale | Copied unchanged. |
+| Maintain Volume | Copied unchanged. |
+| Transformation | Location X ranges are inverted; rotation Y and Z ranges are inverted; scale ranges are copied. This applies to both **From** and **To** ranges. |
+| Transform Cache | Not copied. OmniMirror reports a warning. |
+
+Other constraint types are copied with their writable settings and mirrored armature subtargets, but do not yet have reviewed type-specific axis or range conversion.
