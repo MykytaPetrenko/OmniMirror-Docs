@@ -160,6 +160,20 @@
 </ul>
 <p>If vertices are unassigned, adjust the thresholds, remove duplicates, or create the config earlier in the workflow. A config can retain unassigned vertices, but operations cannot mirror those vertices directly.</p>
 </section>
+</section>
+<section id="unassigned-vertices-processing-asymmetrical-topology">
+<h2>Unassigned Vertices Processing (Asymmetrical Topology)<a class="headerlink" href="#unassigned-vertices-processing-asymmetrical-topology" title="Link to this heading">¶</a></h2>
+<p>When the stored config contains unassigned vertices, the <strong>Persistent Symmetry Config</strong> panel shows <strong>Unassigned Vertices Processing</strong> with their count. This is most common with a topology-based config when symmetry cannot propagate through part of the mesh, but it can also occur with coordinate-based detection.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is not for symmetrizing a fully asymmetrical topology. It helps unresolved asymmetrical elements move smoothly with the surrounding main mesh after the matched area is processed.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Select Unassigned</strong> selects the vertices recorded as unassigned, so you can inspect the affected area.</p></li>
+<li><p><strong>Use Laplacian</strong> approximates results for unassigned mesh vertices and selected UV loops after the directly matched vertices are processed. It keeps assigned vertices or UV loops fixed and deforms their unassigned neighbours through the mesh topology. This can help blend small unresolved areas; it does not establish true pairs for separate elements.</p></li>
+<li><p><strong>Laplacian Iterations</strong> sets the solver’s maximum iteration count when <strong>Use Laplacian</strong> is enabled.</p></li>
+<li><p><strong>Interpolate Vertex Groups</strong> fills unassigned vertex-group weights from assigned vertices through edge-length-weighted topology interpolation when using the vertex-group tools.</p></li>
+</ul>
 <section id="topology-based">
 <h3>Topology Based<a class="headerlink" href="#topology-based" title="Link to this heading">¶</a></h3>
 <p><strong>Topology Based</strong> finds pairs by propagating through connected mesh topology from a known center. It does not use absolute vertex positions to find the pairs, so it can be useful when the mesh has small asymmetrical changes but its main connected structure is still symmetrical.</p>
@@ -202,6 +216,9 @@
 <li><a class="reference internal" href="#before-you-create-one">Before You Create One</a></li>
 <li><a class="reference internal" href="#create-config">Create Config</a><ul>
 <li><a class="reference internal" href="#coordinate-based">Coordinate Based</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unassigned-vertices-processing-asymmetrical-topology">Unassigned Vertices Processing (Asymmetrical Topology)</a><ul>
 <li><a class="reference internal" href="#topology-based">Topology Based</a></li>
 </ul>
 </li>

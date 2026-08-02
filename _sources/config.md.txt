@@ -40,6 +40,20 @@ Use the **Troubleshooting Tools** before creating a final config:
 
 If vertices are unassigned, adjust the thresholds, remove duplicates, or create the config earlier in the workflow. A config can retain unassigned vertices, but operations cannot mirror those vertices directly.
 
+## Unassigned Vertices Processing (Asymmetrical Topology)
+
+When the stored config contains unassigned vertices, the **Persistent Symmetry Config** panel shows **Unassigned Vertices Processing** with their count. This is most common with a topology-based config when symmetry cannot propagate through part of the mesh, but it can also occur with coordinate-based detection.
+
+```eval_rst
+.. note::
+    This is not for symmetrizing a fully asymmetrical topology. It helps unresolved asymmetrical elements move smoothly with the surrounding main mesh after the matched area is processed.
+```
+
+- **Select Unassigned** selects the vertices recorded as unassigned, so you can inspect the affected area.
+- **Use Laplacian** approximates results for unassigned mesh vertices and selected UV loops after the directly matched vertices are processed. It keeps assigned vertices or UV loops fixed and deforms their unassigned neighbours through the mesh topology. This can help blend small unresolved areas; it does not establish true pairs for separate elements.
+- **Laplacian Iterations** sets the solver's maximum iteration count when **Use Laplacian** is enabled.
+- **Interpolate Vertex Groups** fills unassigned vertex-group weights from assigned vertices through edge-length-weighted topology interpolation when using the vertex-group tools.
+
 ### Topology Based
 
 **Topology Based** finds pairs by propagating through connected mesh topology from a known center. It does not use absolute vertex positions to find the pairs, so it can be useful when the mesh has small asymmetrical changes but its main connected structure is still symmetrical.
