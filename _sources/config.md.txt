@@ -18,7 +18,12 @@ The panel reports whether a config is assigned, its **Symmetry Axis**, and its v
 - Coordinate-based detection works best on a genuinely symmetrical mesh, usually immediately after applying a Mirror modifier.
 - Avoid duplicate vertices in coordinate-based detection: they can make an opposite-side match ambiguous.
 
-After creation, moving vertices, editing shape keys, painting weights, changing UVs, and marking seams or sharp edges are fine. Adding, deleting, merging, splitting, remeshing, or reordering vertices requires a new config.
+After creation, you can move vertices, edit shape keys, paint weights, change UVs, and edit edge properties.
+
+```eval_rst
+.. warning::
+    Keep the topology and vertex order unchanged. Adding, deleting, merging, splitting, remeshing, or reordering vertices requires a new config. An export and reimport can change vertex order even if the mesh looks the same.
+```
 
 ## Create Config
 
@@ -27,6 +32,8 @@ Open **Create Config**, choose the **Mirror Axis**, then use either **Coordinate
 ### Coordinate Based
 
 **Coordinate Based** finds a pair by reflecting a vertex across the chosen axis and looking for the best opposite-side match. Vertices close to the mirror plane become center vertices.
+
+![Symmetrical goblin head and the Coordinate Based controls in OmniMirror.](images/config-coordinate.webp)
 
 - **Symmetry Threshold** controls paired-vertex detection.
 - **Center Threshold** controls center-vertex detection.
@@ -40,20 +47,6 @@ Use the **Troubleshooting Tools** before creating a final config:
 
 If vertices are unassigned, adjust the thresholds, remove duplicates, or create the config earlier in the workflow. A config can retain unassigned vertices, but operations cannot mirror those vertices directly.
 
-## Unassigned Vertices Processing (Asymmetrical Topology)
-
-When the stored config contains unassigned vertices, the **Persistent Symmetry Config** panel shows **Unassigned Vertices Processing** with their count. This is most common with a topology-based config when symmetry cannot propagate through part of the mesh, but it can also occur with coordinate-based detection.
-
-```eval_rst
-.. note::
-    This is not for symmetrizing a fully asymmetrical topology. It helps unresolved asymmetrical elements move smoothly with the surrounding main mesh after the matched area is processed.
-```
-
-- **Select Unassigned** selects the vertices recorded as unassigned, so you can inspect the affected area.
-- **Use Laplacian** approximates results for unassigned mesh vertices and selected UV loops after the directly matched vertices are processed. It keeps assigned vertices or UV loops fixed and deforms their unassigned neighbours through the mesh topology. This can help blend small unresolved areas; it does not establish true pairs for separate elements.
-- **Laplacian Iterations** sets the solver's maximum iteration count when **Use Laplacian** is enabled.
-- **Interpolate Vertex Groups** fills unassigned vertex-group weights from assigned vertices through edge-length-weighted topology interpolation when using the vertex-group tools.
-
 ### Topology Based
 
 **Topology Based** finds pairs by propagating through connected mesh topology from a known center. It does not use absolute vertex positions to find the pairs, so it can be useful when the mesh has small asymmetrical changes but its main connected structure is still symmetrical.
@@ -62,8 +55,36 @@ This is not intended to solve a completely asymmetrical character. It can help w
 
 Choose how to define the center:
 
-- **Use Selection**: in Edit Mode, select one or more center edges, then click **Create Config from Topology**.
-- **Use VG**: choose a **Center Vertex Group** whose weighted vertices define the center, then click **Create Config from Topology**. Optionally choose an **Unassigned Vertex Group** to exclude vertices that should not be matched.
+- **Selected** uses the center edges selected in Edit Mode. Select the edges, then click **Create Config from Topology**.
+- **VG** uses the **Center** vertex group. Pick an existing group or select the center loops and click **From Selected** to create it. Then click **Create Config from Topology**.
+
+![The selected center loops and the Topology Based controls.](images/config-topology-center.webp)
+
+#### Mark asymmetric regions
+
+In **VG** mode, use the **Asymmetrical** vertex group to identify areas with no counterpart. This gives the topology search more information about where pairing should stop. On this head, one ear has a cut and a hole that the other ear does not have.
+
+![The two ears, with boxes marking the cut and hole on the asymmetric ear.](images/config-ear-comparison.webp)
+
+Select the vertices around the hole and use **From Selected** under **Asymmetrical**. Then select the cut and use **Add Selected** to add it to the same group. Create the topology config again with that group assigned.
+
+![The selected ear hole and the Asymmetrical From Selected button.](images/config-topology-exclude.webp)
+
+![The selected ear cut, Add Selected, and Create Config from Topology.](images/config-topology-add.webp)
+
+## Unassigned vertices
+
+When a config contains unassigned vertices, **Persistent Symmetry Config** shows their count under **Unassigned Vertices Processing**. In the example below, the panel reports **202 unassigned vertices detected**. Click **Select Unassigned** to inspect the affected areas.
+
+![The topology config warning for 202 unassigned vertices and the interpolation settings.](images/config-topology-warning.webp)
+
+- **Use Laplacian** blends unassigned regions into their processed surroundings for Basis Mesh, shape key symmetrization and splitting, and UV symmetrization.
+- **Laplacian Iterations** sets the solver's maximum iteration count.
+- **Interpolate Vertex Groups** fills unassigned weights from nearby assigned vertices along the mesh topology.
+
+Use these options for local differences around a mesh with usable vertex pairs. For larger unresolved areas, check the center and the connectivity on both sides before continuing. In the ear example, marking the cut and hole reduces the unassigned count from 202 to 88 by helping the search resolve more of the surrounding mesh.
+
+![The recreated topology config reports 88 unassigned vertices.](images/config-topology-result.webp)
 
 ## Transfer a Config
 

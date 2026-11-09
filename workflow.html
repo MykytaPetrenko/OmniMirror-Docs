@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Workflow &mdash; OmniMirror 1.0.0 documentation</title>
+        <title>Workflow &mdash; OmniMirror 1.2.0 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
@@ -14,7 +14,7 @@
             <link rel="author" title="About these documents" href="about.html" />
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
-            <link rel="top" title="OmniMirror 1.0.0 documentation" href="#" />
+            <link rel="top" title="OmniMirror 1.2.0 documentation" href="#" />
             <link rel="next" title="Persistent Symmetry Config" href="config.html" />
             <link rel="prev" title="About" href="about.html" />
     </head>
@@ -124,14 +124,13 @@
                         <main role="main" id="main">
     <section id="workflow">
 <h1>Workflow<a class="headerlink" href="#workflow" title="Link to this heading">¶</a></h1>
-<p>OmniMirror is built around one main idea: create a persistent symmetry config while the mesh is still symmetrical, then reuse it later while the topology and vertex order stay unchanged. The config is saved with the mesh in the <code class="docutils literal notranslate"><span class="pre">.blend</span></code> file.</p>
+<p>Create a persistent symmetry config for the mesh and reuse it as you work. The config is saved with the mesh in the <code class="docutils literal notranslate"><span class="pre">.blend</span></code> file and remains valid as long as topology and vertex order stay the same.</p>
 <section id="basic-order">
 <h2>Basic Order<a class="headerlink" href="#basic-order" title="Link to this heading">¶</a></h2>
 <ol class="simple">
-<li><p>Start from a clean symmetrical mesh, usually right after applying the Mirror modifier.</p></li>
-<li><p>Create a persistent symmetry config. See <a class="reference internal" href="config.html"><span class="doc">Persistent Symmetry Config</span></a>.</p></li>
-<li><p>Continue editing the model without changing topology or vertex order.</p></li>
-<li><p>Use the OmniMirror tools when you need symmetry again.</p></li>
+<li><p>Use <strong>Coordinate Based</strong> on a symmetrical mesh or <strong>Topology Based</strong> on a mesh with enough matching topology. See <a class="reference internal" href="config.html"><span class="doc">Persistent Symmetry Config</span></a>.</p></li>
+<li><p>Continue editing the model while keeping topology and vertex order unchanged.</p></li>
+<li><p>Use the OmniMirror tools whenever you need symmetry again.</p></li>
 </ol>
 </section>
 <section id="main-tools">
@@ -142,7 +141,7 @@
 <li><p>Use <a class="reference internal" href="shape_key_symmetrization.html"><span class="doc">Shape Key Symmetrization</span></a> when creating a shape key on one side and symmetrizing the deformation.</p></li>
 <li><p>Use <a class="reference internal" href="shape_key_split.html"><span class="doc">Shape Key Split</span></a> when one shape key affects both sides and you need separate left/right controls.</p></li>
 <li><p>Use <a class="reference internal" href="uv.html"><span class="doc">UV Symmetry</span></a> for UV side preview, selected UV symmetrization, axis snapping, and ICP snapping for paired UV islands.</p></li>
-<li><p>Use <a class="reference internal" href="edges.html"><span class="doc">Edge Symmetry</span></a> to mirror seams and sharp edges.</p></li>
+<li><p>Use <a class="reference internal" href="edges.html"><span class="doc">Edge Symmetry</span></a> to copy seams, sharp marks, crease values, bevel weights, and Freestyle marks.</p></li>
 <li><p>Use <a class="reference internal" href="pose.html"><span class="doc">Pose Symmetry</span></a> to mirror pose transforms and, experimentally, selected-bone constraint stacks.</p></li>
 </ul>
 </section>
@@ -231,7 +230,7 @@
     </div>
         </div>
     </footer>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/documentation_options.js?v=6efca38a"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script type="text/javascript" src="_static/dist/theme.js"></script>

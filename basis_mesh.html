@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Basis Mesh Symmetrization &mdash; OmniMirror 1.0.0 documentation</title>
+        <title>Basis Mesh Symmetrization &mdash; OmniMirror 1.2.0 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
@@ -14,7 +14,7 @@
             <link rel="author" title="About these documents" href="about.html" />
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
-            <link rel="top" title="OmniMirror 1.0.0 documentation" href="#" />
+            <link rel="top" title="OmniMirror 1.2.0 documentation" href="#" />
             <link rel="next" title="Vertex Group Symmetrization" href="vertex_group.html" />
             <link rel="prev" title="Persistent Symmetry Config" href="config.html" />
     </head>
@@ -132,7 +132,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">OmniMirror</span> <span class="pre">&gt;</span> <span class="pre">Basis</span> <span class="pre">Mesh</span></code></p>
 <p>The section contains:</p>
 <ul class="simple">
-<li><p><strong>Mode</strong></p></li>
+<li><p><strong>Flow</strong></p></li>
+<li><p><strong>Recompute Shape Keys</strong></p></li>
 <li><p><strong>Save Original as Shape Key</strong></p></li>
 <li><p><strong>Symmetrize</strong></p></li>
 </ul>
@@ -147,6 +148,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">-&gt;</span> <span class="pre">+X</span></code> copies vertex coordinates from the negative X side of the config to the positive X side. The axis letter changes to match the config’s <strong>Symmetry Axis</strong>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">+X</span> <span class="pre">-&gt;</span> <span class="pre">-X</span></code> copies vertex coordinates from the positive X side of the config to the negative X side. The axis letter changes to match the config’s <strong>Symmetry Axis</strong>.</p></li>
 </ul>
+<p><img alt="The original goblin head and the results of Average, negative-to-positive, and positive-to-negative flow." src="_images/mesh-modes.webp" /></p>
 <p>The directional flow is defined by the sides recorded when the config was created, not by the mesh’s current visible position. Read the labels as the configured negative and positive axis sides, rather than assuming they always mean visual left and right.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -156,10 +158,14 @@
 <p>For another orientation, follow the axis labels rather than visual left and right.</p>
 </div>
 </section>
+<section id="recompute-shape-keys">
+<h3>Recompute Shape Keys<a class="headerlink" href="#recompute-shape-keys" title="Link to this heading">¶</a></h3>
+<p>When <strong>Recompute Shape Keys</strong> is enabled, existing shape keys follow the change to Basis while keeping their deformation offsets.</p>
+</section>
 <section id="save-original-as-shape-key">
 <h3>Save Original as Shape Key<a class="headerlink" href="#save-original-as-shape-key" title="Link to this heading">¶</a></h3>
 <p>Enable <strong>Save Original as Shape Key</strong> if you want to preserve the current mesh coordinates before symmetrizing.</p>
-<p>When enabled, OmniMirror creates a shape key named <code class="docutils literal notranslate"><span class="pre">BEFORE_SYMMETRIZE</span></code> before writing the new basis mesh coordinates. This is useful for comparing the result or recovering the previous shape.</p>
+<p>When enabled, OmniMirror stores the previous coordinates in a shape key named <code class="docutils literal notranslate"><span class="pre">BEFORE_SYMMETRIZE</span></code>. Use it to compare the shapes or recover the previous one.</p>
 </section>
 </section>
 <section id="symmetrize-process">
@@ -173,6 +179,14 @@
 <li><p>Force center vertices onto the selected symmetry axis.</p></li>
 <li><p>Write the processed coordinates back to the basis mesh.</p></li>
 </ol>
+</section>
+<section id="symmetrize-a-selection">
+<h2>Symmetrize a selection<a class="headerlink" href="#symmetrize-a-selection" title="Link to this heading">¶</a></h2>
+<p>In Edit Mode, select the vertices you want to use and open the <strong>Selected</strong> controls. <strong>From Selected</strong> copies their positions to their counterparts. <strong>To Selected</strong> copies the counterparts’ positions to the selection.</p>
+<p><strong>Falloff</strong> blends the change into nearby vertices along connected edges. The distance limits how far the effect reaches, and <strong>Falloff Shape</strong> sets the blend curve. A distance of zero disables it.</p>
+<p><img alt="Before and after copying the selected ear shape to its opposite side." src="_images/mesh-selection.webp" /></p>
+<p>With <strong>Use Laplacian</strong> enabled in the config panel, unassigned vertices around a local asymmetry can follow the surrounding geometry. The ear’s hole and cut keep their topology as they move with the ear.</p>
+<p><img alt="Close-up of the hole and cut before and after the ear changes shape." src="_images/mesh-ear-laplacian.webp" /></p>
 </section>
 </section>
 
@@ -195,10 +209,12 @@
 <li><a class="reference internal" href="#where-to-find-it">Where to Find It</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
 <li><a class="reference internal" href="#flow">Flow</a></li>
+<li><a class="reference internal" href="#recompute-shape-keys">Recompute Shape Keys</a></li>
 <li><a class="reference internal" href="#save-original-as-shape-key">Save Original as Shape Key</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#symmetrize-process">Symmetrize Process</a></li>
+<li><a class="reference internal" href="#symmetrize-a-selection">Symmetrize a selection</a></li>
 </ul>
 </li>
 </ul>
@@ -259,7 +275,7 @@
     </div>
         </div>
     </footer>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/documentation_options.js?v=6efca38a"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script type="text/javascript" src="_static/dist/theme.js"></script>

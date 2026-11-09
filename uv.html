@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>UV Symmetry &mdash; OmniMirror 1.0.0 documentation</title>
+        <title>UV Symmetry &mdash; OmniMirror 1.2.0 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
@@ -14,7 +14,7 @@
             <link rel="author" title="About these documents" href="about.html" />
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
-            <link rel="top" title="OmniMirror 1.0.0 documentation" href="#" />
+            <link rel="top" title="OmniMirror 1.2.0 documentation" href="#" />
             <link rel="next" title="Edge Symmetry" href="edges.html" />
             <link rel="prev" title="Shape Key Split" href="shape_key_split.html" />
     </head>
@@ -137,6 +137,15 @@
 <li><p><strong>Rigid Snap</strong></p></li>
 </ul>
 </section>
+<section id="example-workflow">
+<h2>Example workflow<a class="headerlink" href="#example-workflow" title="Link to this heading">¶</a></h2>
+<ol class="simple">
+<li><p>Turn on <strong>Side Preview</strong> to check the sides and center vertices, then stop the preview.</p></li>
+<li><p>Select the whole head island. Use <strong>Axis Snap</strong> to align it as one piece, then <strong>Symmetrize Selected UVs</strong> in <strong>Average</strong> mode to adjust the matching UV vertices.</p></li>
+<li><p>Move one ear island to the desired side of the axis. Select both ear islands and use <strong>ICP Snap</strong> with <strong>Use Scale</strong> off. Run <strong>Symmetrize Selected UVs</strong> if you also want to mirror the matching UV vertices.</p></li>
+</ol>
+<p><img alt="Blender UV Editor showing Side Preview, Axis Snap and symmetry on the head island, then ICP Snap and symmetry on the ears." src="_images/uv-workflow-blender-web.gif" /></p>
+</section>
 <section id="shared-parameters">
 <h2>Shared Parameters<a class="headerlink" href="#shared-parameters" title="Link to this heading">¶</a></h2>
 <ol class="simple">
@@ -166,7 +175,7 @@
 <li><p><strong>Start Preview</strong> controls which UVs are shown.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">UVs</span></code></strong> builds the preview for all UV loops.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Selected</span> <span class="pre">UVs</span></code></strong> builds the preview only for selected UV loops.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Selected</span> <span class="pre">UVs</span></code></strong> shows the selected UV loops. If nothing is selected, the preview shows all visible UVs.</p></li>
 </ul>
 </li>
 <li><p><strong>Stop Preview</strong> turns the active preview off.</p></li>
@@ -220,8 +229,7 @@
 <p>Use this when a UV island should be centered on the symmetry axis but is slightly offset or tilted.</p>
 <section id="selection-requirements">
 <h3>Selection Requirements<a class="headerlink" href="#selection-requirements" title="Link to this heading">¶</a></h3>
-<p>Use Axis Snap for a single UV island that contains both sides of the mesh and center loops between them.</p>
-<p>The island must include center loops detected from the persistent symmetry configuration. If OmniMirror cannot find center loops inside the selected island, the island is skipped.</p>
+<p>Select the entire island to move it as a single piece. Axis Snap processes each selected island with center loops detected from the persistent symmetry configuration. Islands without detected center loops are skipped.</p>
 </section>
 </section>
 <section id="icp-snap-selected-uv-islands">
@@ -243,7 +251,7 @@
 <section id="id2">
 <h3>Selection Requirements<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <p>Use ICP Snap for two separate UV islands that represent symmetrical parts of the mesh.</p>
-<p>Select UV loops from both the source and target islands. OmniMirror needs matched selected loop pairs across the two islands to calculate the transform. Center loops are ignored for this operation, and pairs inside the same UV island are skipped.</p>
+<p>Select both entire islands for a rigid move. OmniMirror uses matched selected loop pairs across the two islands to calculate the transform and applies it to the selected target UVs. Center loops and pairs inside the same island are skipped.</p>
 </section>
 </section>
 </section>
@@ -265,6 +273,7 @@
                             <ul>
 <li><a class="reference internal" href="#">UV Symmetry</a><ul>
 <li><a class="reference internal" href="#where-to-find-it">Where to Find It</a></li>
+<li><a class="reference internal" href="#example-workflow">Example workflow</a></li>
 <li><a class="reference internal" href="#shared-parameters">Shared Parameters</a></li>
 <li><a class="reference internal" href="#side-preview">Side Preview</a><ul>
 <li><a class="reference internal" href="#preview-controls">Preview Controls</a></li>
@@ -346,7 +355,7 @@
     </div>
         </div>
     </footer>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/documentation_options.js?v=6efca38a"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script type="text/javascript" src="_static/dist/theme.js"></script>

@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Persistent Symmetry Config &mdash; OmniMirror 1.0.0 documentation</title>
+        <title>Persistent Symmetry Config &mdash; OmniMirror 1.2.0 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
@@ -14,7 +14,7 @@
             <link rel="author" title="About these documents" href="about.html" />
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
-            <link rel="top" title="OmniMirror 1.0.0 documentation" href="#" />
+            <link rel="top" title="OmniMirror 1.2.0 documentation" href="#" />
             <link rel="next" title="Basis Mesh Symmetrization" href="basis_mesh.html" />
             <link rel="prev" title="Workflow" href="workflow.html" />
     </head>
@@ -139,7 +139,11 @@
 <li><p>Coordinate-based detection works best on a genuinely symmetrical mesh, usually immediately after applying a Mirror modifier.</p></li>
 <li><p>Avoid duplicate vertices in coordinate-based detection: they can make an opposite-side match ambiguous.</p></li>
 </ul>
-<p>After creation, moving vertices, editing shape keys, painting weights, changing UVs, and marking seams or sharp edges are fine. Adding, deleting, merging, splitting, remeshing, or reordering vertices requires a new config.</p>
+<p>After creation, you can move vertices, edit shape keys, paint weights, change UVs, and edit edge properties.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Keep the topology and vertex order unchanged. Adding, deleting, merging, splitting, remeshing, or reordering vertices requires a new config. An export and reimport can change vertex order even if the mesh looks the same.</p>
+</div>
 </section>
 <section id="create-config">
 <h2>Create Config<a class="headerlink" href="#create-config" title="Link to this heading">¶</a></h2>
@@ -147,6 +151,7 @@
 <section id="coordinate-based">
 <h3>Coordinate Based<a class="headerlink" href="#coordinate-based" title="Link to this heading">¶</a></h3>
 <p><strong>Coordinate Based</strong> finds a pair by reflecting a vertex across the chosen axis and looking for the best opposite-side match. Vertices close to the mirror plane become center vertices.</p>
+<p><img alt="Symmetrical goblin head and the Coordinate Based controls in OmniMirror." src="_images/config-coordinate.webp" /></p>
 <ul class="simple">
 <li><p><strong>Symmetry Threshold</strong> controls paired-vertex detection.</p></li>
 <li><p><strong>Center Threshold</strong> controls center-vertex detection.</p></li>
@@ -160,30 +165,37 @@
 </ul>
 <p>If vertices are unassigned, adjust the thresholds, remove duplicates, or create the config earlier in the workflow. A config can retain unassigned vertices, but operations cannot mirror those vertices directly.</p>
 </section>
-</section>
-<section id="unassigned-vertices-processing-asymmetrical-topology">
-<h2>Unassigned Vertices Processing (Asymmetrical Topology)<a class="headerlink" href="#unassigned-vertices-processing-asymmetrical-topology" title="Link to this heading">¶</a></h2>
-<p>When the stored config contains unassigned vertices, the <strong>Persistent Symmetry Config</strong> panel shows <strong>Unassigned Vertices Processing</strong> with their count. This is most common with a topology-based config when symmetry cannot propagate through part of the mesh, but it can also occur with coordinate-based detection.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is not for symmetrizing a fully asymmetrical topology. It helps unresolved asymmetrical elements move smoothly with the surrounding main mesh after the matched area is processed.</p>
-</div>
-<ul class="simple">
-<li><p><strong>Select Unassigned</strong> selects the vertices recorded as unassigned, so you can inspect the affected area.</p></li>
-<li><p><strong>Use Laplacian</strong> approximates results for unassigned mesh vertices and selected UV loops after the directly matched vertices are processed. It keeps assigned vertices or UV loops fixed and deforms their unassigned neighbours through the mesh topology. This can help blend small unresolved areas; it does not establish true pairs for separate elements.</p></li>
-<li><p><strong>Laplacian Iterations</strong> sets the solver’s maximum iteration count when <strong>Use Laplacian</strong> is enabled.</p></li>
-<li><p><strong>Interpolate Vertex Groups</strong> fills unassigned vertex-group weights from assigned vertices through edge-length-weighted topology interpolation when using the vertex-group tools.</p></li>
-</ul>
 <section id="topology-based">
 <h3>Topology Based<a class="headerlink" href="#topology-based" title="Link to this heading">¶</a></h3>
 <p><strong>Topology Based</strong> finds pairs by propagating through connected mesh topology from a known center. It does not use absolute vertex positions to find the pairs, so it can be useful when the mesh has small asymmetrical changes but its main connected structure is still symmetrical.</p>
 <p>This is not intended to solve a completely asymmetrical character. It can help with partial asymmetry on an otherwise symmetrical mesh. It also cannot establish pairs for separate elements, such as independent left and right eye objects or disconnected eye islands: the pairing must propagate from the center through connected topology.</p>
 <p>Choose how to define the center:</p>
 <ul class="simple">
-<li><p><strong>Use Selection</strong>: in Edit Mode, select one or more center edges, then click <strong>Create Config from Topology</strong>.</p></li>
-<li><p><strong>Use VG</strong>: choose a <strong>Center Vertex Group</strong> whose weighted vertices define the center, then click <strong>Create Config from Topology</strong>. Optionally choose an <strong>Unassigned Vertex Group</strong> to exclude vertices that should not be matched.</p></li>
+<li><p><strong>Selected</strong> uses the center edges selected in Edit Mode. Select the edges, then click <strong>Create Config from Topology</strong>.</p></li>
+<li><p><strong>VG</strong> uses the <strong>Center</strong> vertex group. Pick an existing group or select the center loops and click <strong>From Selected</strong> to create it. Then click <strong>Create Config from Topology</strong>.</p></li>
 </ul>
+<p><img alt="The selected center loops and the Topology Based controls." src="_images/config-topology-center.webp" /></p>
+<section id="mark-asymmetric-regions">
+<h4>Mark asymmetric regions<a class="headerlink" href="#mark-asymmetric-regions" title="Link to this heading">¶</a></h4>
+<p>In <strong>VG</strong> mode, use the <strong>Asymmetrical</strong> vertex group to identify areas with no counterpart. This gives the topology search more information about where pairing should stop. On this head, one ear has a cut and a hole that the other ear does not have.</p>
+<p><img alt="The two ears, with boxes marking the cut and hole on the asymmetric ear." src="_images/config-ear-comparison.webp" /></p>
+<p>Select the vertices around the hole and use <strong>From Selected</strong> under <strong>Asymmetrical</strong>. Then select the cut and use <strong>Add Selected</strong> to add it to the same group. Create the topology config again with that group assigned.</p>
+<p><img alt="The selected ear hole and the Asymmetrical From Selected button." src="_images/config-topology-exclude.webp" /></p>
+<p><img alt="The selected ear cut, Add Selected, and Create Config from Topology." src="_images/config-topology-add.webp" /></p>
 </section>
+</section>
+</section>
+<section id="unassigned-vertices">
+<h2>Unassigned vertices<a class="headerlink" href="#unassigned-vertices" title="Link to this heading">¶</a></h2>
+<p>When a config contains unassigned vertices, <strong>Persistent Symmetry Config</strong> shows their count under <strong>Unassigned Vertices Processing</strong>. In the example below, the panel reports <strong>202 unassigned vertices detected</strong>. Click <strong>Select Unassigned</strong> to inspect the affected areas.</p>
+<p><img alt="The topology config warning for 202 unassigned vertices and the interpolation settings." src="_images/config-topology-warning.webp" /></p>
+<ul class="simple">
+<li><p><strong>Use Laplacian</strong> blends unassigned regions into their processed surroundings for Basis Mesh, shape key symmetrization and splitting, and UV symmetrization.</p></li>
+<li><p><strong>Laplacian Iterations</strong> sets the solver’s maximum iteration count.</p></li>
+<li><p><strong>Interpolate Vertex Groups</strong> fills unassigned weights from nearby assigned vertices along the mesh topology.</p></li>
+</ul>
+<p>Use these options for local differences around a mesh with usable vertex pairs. For larger unresolved areas, check the center and the connectivity on both sides before continuing. In the ear example, marking the cut and hole reduces the unassigned count from 202 to 88 by helping the search resolve more of the surrounding mesh.</p>
+<p><img alt="The recreated topology config reports 88 unassigned vertices." src="_images/config-topology-result.webp" /></p>
 </section>
 <section id="transfer-a-config">
 <h2>Transfer a Config<a class="headerlink" href="#transfer-a-config" title="Link to this heading">¶</a></h2>
@@ -216,12 +228,13 @@
 <li><a class="reference internal" href="#before-you-create-one">Before You Create One</a></li>
 <li><a class="reference internal" href="#create-config">Create Config</a><ul>
 <li><a class="reference internal" href="#coordinate-based">Coordinate Based</a></li>
+<li><a class="reference internal" href="#topology-based">Topology Based</a><ul>
+<li><a class="reference internal" href="#mark-asymmetric-regions">Mark asymmetric regions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#unassigned-vertices-processing-asymmetrical-topology">Unassigned Vertices Processing (Asymmetrical Topology)</a><ul>
-<li><a class="reference internal" href="#topology-based">Topology Based</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#unassigned-vertices">Unassigned vertices</a></li>
 <li><a class="reference internal" href="#transfer-a-config">Transfer a Config</a></li>
 </ul>
 </li>
@@ -283,7 +296,7 @@
     </div>
         </div>
     </footer>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/documentation_options.js?v=6efca38a"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script type="text/javascript" src="_static/dist/theme.js"></script>

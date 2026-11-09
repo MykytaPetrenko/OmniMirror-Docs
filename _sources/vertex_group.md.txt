@@ -37,10 +37,30 @@ Click **Symmetrize Single** to process only the active vertex group or a pair of
 
 This is the best option when checking the selected **Type**, **Single Flow**, or **Pair Flow** settings before processing a larger set.
 
+### Mirror between paired groups
+
+With `ear_l` active, set **Type** to **Pair** and **Pair Flow** to **Left → Right**. Click **Symmetrize Single**, then select `ear_r` to inspect the result.
+
+![The Vertex Groups panel set to Pair and Left to Right.](images/weights-pair-controls.webp)
+
+![Weights transfer to the opposite ear, with close-ups of interpolation around its cut and hole.](images/weights-omnimirror-pair-web.gif)
+
+On this mesh, Blender’s built-in mirror operations leave some or all of the weights on the source ear. The result depends on the mesh and the matching method.
+
+![The original ear weights and results from Blender’s position and topology mirror operations.](images/weights-blender-mirror-web.gif)
+
+### Symmetrize within a single group
+
+For a group such as `forehead`, use **Single**. Here, **Single Flow** is set to **−X → +X** to copy the painted side within the same group.
+
+![Before and after copying the forehead weights within one vertex group.](images/weights-forehead-single.webp)
+
 ## Batch Processing
 
 Click **Symmetrize All** to process every vertex group on the active mesh.
 
 If you enable **Advanced Batch Options**, the button changes to **Symmetrize Custom Batch**. The checklist lets you choose exactly which vertex groups should be processed. Use **Refresh** to rebuild the list, **Check All** to select every item, and **Uncheck All** to clear the selection.
+
+![The Vertex Groups batch checklist includes both ear_l and forehead in Auto mode.](images/batch-vertex-groups.webp)
 
 During processing, OmniMirror shows progress and allows the operation to be cancelled.

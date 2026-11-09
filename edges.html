@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Edge Symmetry &mdash; OmniMirror 1.0.0 documentation</title>
+        <title>Edge Symmetry &mdash; OmniMirror 1.2.0 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
@@ -14,7 +14,7 @@
             <link rel="author" title="About these documents" href="about.html" />
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
-            <link rel="top" title="OmniMirror 1.0.0 documentation" href="#" />
+            <link rel="top" title="OmniMirror 1.2.0 documentation" href="#" />
             <link rel="next" title="Pose Symmetry" href="pose.html" />
             <link rel="prev" title="UV Symmetry" href="uv.html" />
     </head>
@@ -124,7 +124,7 @@
                         <main role="main" id="main">
     <section id="edge-symmetry">
 <h1>Edge Symmetry<a class="headerlink" href="#edge-symmetry" title="Link to this heading">¶</a></h1>
-<p><strong>Edges</strong> mirrors seam and sharp-edge states using the active mesh’s persistent symmetry config. The mesh needs a compatible config, but it may be used in Object Mode or Edit Mode.</p>
+<p><strong>Edges</strong> copies edge properties using the active mesh’s persistent symmetry config. Use <strong>All</strong> in Object Mode or Edit Mode. The selection tools are available in Edit Mode.</p>
 <section id="where-to-find-it">
 <h2>Where to Find It<a class="headerlink" href="#where-to-find-it" title="Link to this heading">¶</a></h2>
 <p>In the 3D View sidebar, open:</p>
@@ -132,23 +132,15 @@
 </section>
 <section id="symmetrize-all">
 <h2>Symmetrize All<a class="headerlink" href="#symmetrize-all" title="Link to this heading">¶</a></h2>
-<p>Set <strong>Flow</strong>, then use one of the buttons under <strong>Symmetrize All:</strong>:</p>
-<ul class="simple">
-<li><p><strong>Seams</strong> mirrors seam marks.</p></li>
-<li><p><strong>Sharp</strong> mirrors sharp-edge marks.</p></li>
-<li><p><strong>Both</strong> mirrors both kinds of edge flag.</p></li>
-</ul>
+<p>Under <strong>Mode</strong>, enable the properties to copy. The options are <strong>Seam</strong>, <strong>Sharp</strong>, <strong>Crease</strong>, <strong>Bevel</strong>, and <strong>Freestyle</strong>. Set <strong>Flow</strong>, then click <strong>All</strong>.</p>
+<p><img alt="The Edges panel with five property toggles, Only Add, Flow, All, From Selected, and To Selected." src="_images/mesh-edge-controls.webp" /></p>
 <p>The flow uses the config’s axis labels: <strong><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">-&gt;</span> <span class="pre">+X</span></code></strong> copies from the negative axis side to the positive axis side, and <strong><code class="docutils literal notranslate"><span class="pre">+X</span> <span class="pre">-&gt;</span> <span class="pre">-X</span></code></strong> copies in the other direction. The displayed axis changes to match the config, and the direction is defined by the sides recorded when that config was created.</p>
-<p>Enable <strong>Only Add</strong> to copy marked seams or sharp edges without clearing any existing marks on the target side.</p>
+<p>Enable <strong>Only Add</strong> to keep marks that already exist on the target and to increase crease or bevel weights only when the source value is higher.</p>
 </section>
 <section id="selected-edges">
 <h2>Selected Edges<a class="headerlink" href="#selected-edges" title="Link to this heading">¶</a></h2>
-<p>In Edit Mode, the panel also shows selected-edge actions:</p>
-<ul class="simple">
-<li><p>Under <strong>From Selected:</strong>, use <strong>Seams</strong>, <strong>Sharp</strong>, or <strong>Both</strong> to copy the selected edges’ flags to their mirrored counterparts.</p></li>
-<li><p>Under <strong>To Selected:</strong>, use the same buttons to copy each counterpart’s flags to the selected edges.</p></li>
-</ul>
-<p>These actions only affect selected edges that have a matching edge in the config.</p>
+<p>In Edit Mode, select the edges you want to use. <strong>From Selected</strong> copies the enabled properties to their counterparts. <strong>To Selected</strong> copies the enabled properties from each counterpart to the selected edge.</p>
+<p>These actions use edge pairs whose endpoints have valid counterparts in the config. Blender’s <strong>Edge</strong> menu also has shortcuts for copying individual properties to or from symmetry.</p>
 </section>
 </section>
 
@@ -231,7 +223,7 @@
     </div>
         </div>
     </footer>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/documentation_options.js?v=6efca38a"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script type="text/javascript" src="_static/dist/theme.js"></script>

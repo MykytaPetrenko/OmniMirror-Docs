@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Shape Key Symmetrization &mdash; OmniMirror 1.0.0 documentation</title>
+        <title>Shape Key Symmetrization &mdash; OmniMirror 1.2.0 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
@@ -14,7 +14,7 @@
             <link rel="author" title="About these documents" href="about.html" />
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
-            <link rel="top" title="OmniMirror 1.0.0 documentation" href="#" />
+            <link rel="top" title="OmniMirror 1.2.0 documentation" href="#" />
             <link rel="next" title="Shape Key Split" href="shape_key_split.html" />
             <link rel="prev" title="Vertex Group Symmetrization" href="vertex_group.html" />
     </head>
@@ -144,7 +144,7 @@
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">Single</span></code></strong> treats each shape key as a standalone, central shape key. It symmetrizes the shape key within itself.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">Pair</span></code></strong> expects a left/right shape key pair. OmniMirror tries to find the matching counterpart by using Blender-style side names, such as <code class="docutils literal notranslate"><span class="pre">.L</span></code> and <code class="docutils literal notranslate"><span class="pre">.R</span></code>, <code class="docutils literal notranslate"><span class="pre">_L</span></code> and <code class="docutils literal notranslate"><span class="pre">_R</span></code>, or <code class="docutils literal notranslate"><span class="pre">Left</span></code> and <code class="docutils literal notranslate"><span class="pre">Right</span></code>.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Auto</span></code></strong> tries to use paired processing when a matching left/right counterpart exists. If no counterpart is found, it falls back to single shape key processing. <code class="docutils literal notranslate"><span class="pre">Auto</span></code> is a good default for batch processing mixed shape key lists.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Auto</span></code></strong> uses paired processing for side-named keys and single-key processing for the rest. A directional <strong>Pair Flow</strong> can create a missing counterpart when you start from the named source side.</p></li>
 </ul>
 </li>
 <li><p><strong>Single Flow</strong> (similar to <strong>Flow</strong> in <strong>Basis Mesh</strong>) is used when a shape key is processed as a single shape key. The axis labels come from the saved symmetry config.</p>
@@ -167,11 +167,22 @@
 <section id="symmetrize-active">
 <h2>Symmetrize Active<a class="headerlink" href="#symmetrize-active" title="Link to this heading">¶</a></h2>
 <p>Click <strong>Symmetrize Active</strong> to process only the currently active shape key or a pair of shape keys where one of them is active.</p>
+<section id="mirror-to-a-paired-key">
+<h3>Mirror to a paired key<a class="headerlink" href="#mirror-to-a-paired-key" title="Link to this heading">¶</a></h3>
+<p>With <code class="docutils literal notranslate"><span class="pre">ear_l</span></code> active, set <strong>Type</strong> to <strong>Pair</strong> and <strong>Pair Flow</strong> to <strong>Left → Right</strong>. <strong>Symmetrize Active</strong> creates <code class="docutils literal notranslate"><span class="pre">ear_r</span></code> if it is missing and copies the mirrored deformation into it.</p>
+<p><img alt="The ear_l shape key and the ear_r counterpart created by Symmetrize Active." src="_images/shape-keys-pair-web.gif" /></p>
+</section>
+<section id="symmetrize-a-key-within-itself">
+<h3>Symmetrize a key within itself<a class="headerlink" href="#symmetrize-a-key-within-itself" title="Link to this heading">¶</a></h3>
+<p>Use <strong>Single</strong> for a central shape key such as an asymmetric smile. The example starts from the same original shape for each <strong>Single Flow</strong> setting.</p>
+<p><img alt="An asymmetric smile processed with Average and both directional flows." src="_images/shape-keys-center-web.gif" /></p>
+</section>
 </section>
 <section id="batch-processing">
 <h2>Batch Processing<a class="headerlink" href="#batch-processing" title="Link to this heading">¶</a></h2>
 <p>Click <strong>Symmetrize All</strong> to process every shape key except the Basis shape key.</p>
 <p>If you enable <strong>Advanced Batch Options</strong>, the button changes to <strong>Symmetrize Custom Batch</strong>. The checklist lets you choose exactly which shape keys should be processed. Use <strong>Refresh</strong> to rebuild the list, <strong>Check All</strong> to select every item, and <strong>Uncheck All</strong> to clear the selection.</p>
+<p><img alt="The Shape Keys checklist with two smile keys checked and both custom batch buttons visible." src="_images/batch-shape-keys.webp" /></p>
 </section>
 </section>
 
@@ -193,7 +204,11 @@
 <li><a class="reference internal" href="#">Shape Key Symmetrization</a><ul>
 <li><a class="reference internal" href="#where-to-find-it">Where to Find It</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#symmetrize-active">Symmetrize Active</a></li>
+<li><a class="reference internal" href="#symmetrize-active">Symmetrize Active</a><ul>
+<li><a class="reference internal" href="#mirror-to-a-paired-key">Mirror to a paired key</a></li>
+<li><a class="reference internal" href="#symmetrize-a-key-within-itself">Symmetrize a key within itself</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#batch-processing">Batch Processing</a></li>
 </ul>
 </li>
@@ -255,7 +270,7 @@
     </div>
         </div>
     </footer>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/documentation_options.js?v=6efca38a"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script type="text/javascript" src="_static/dist/theme.js"></script>

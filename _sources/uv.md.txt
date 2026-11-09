@@ -16,6 +16,14 @@ The UV panel contains shared settings at the top, followed by:
 - **Symmetrize**
 - **Rigid Snap**
 
+## Example workflow
+
+1. Turn on **Side Preview** to check the sides and center vertices, then stop the preview.
+2. Select the whole head island. Use **Axis Snap** to align it as one piece, then **Symmetrize Selected UVs** in **Average** mode to adjust the matching UV vertices.
+3. Move one ear island to the desired side of the axis. Select both ear islands and use **ICP Snap** with **Use Scale** off. Run **Symmetrize Selected UVs** if you also want to mirror the matching UV vertices.
+
+![Blender UV Editor showing Side Preview, Axis Snap and symmetry on the head island, then ICP Snap and symmetry on the ears.](images/uv-workflow-blender-web.gif)
+
 ## Shared Parameters
 
 1. **UV Axis** controls which UV coordinate is used as the symmetry axis.
@@ -42,7 +50,7 @@ It helps you check how OmniMirror classifies UVs before running an operation:
 
 2. **Start Preview** controls which UVs are shown.
     - **`All UVs`** builds the preview for all UV loops.
-    - **`Selected UVs`** builds the preview only for selected UV loops.
+    - **`Selected UVs`** shows the selected UV loops. If nothing is selected, the preview shows all visible UVs.
 
 3. **Stop Preview** turns the active preview off.
 
@@ -95,9 +103,7 @@ Use this when a UV island should be centered on the symmetry axis but is slightl
 
 ### Selection Requirements
 
-Use Axis Snap for a single UV island that contains both sides of the mesh and center loops between them.
-
-The island must include center loops detected from the persistent symmetry configuration. If OmniMirror cannot find center loops inside the selected island, the island is skipped.
+Select the entire island to move it as a single piece. Axis Snap processes each selected island with center loops detected from the persistent symmetry configuration. Islands without detected center loops are skipped.
 
 ## ICP Snap Selected UV Islands
 
@@ -117,4 +123,4 @@ The tool uses matched UV pairs as control points, then moves the target island w
 
 Use ICP Snap for two separate UV islands that represent symmetrical parts of the mesh.
 
-Select UV loops from both the source and target islands. OmniMirror needs matched selected loop pairs across the two islands to calculate the transform. Center loops are ignored for this operation, and pairs inside the same UV island are skipped.
+Select both entire islands for a rigid move. OmniMirror uses matched selected loop pairs across the two islands to calculate the transform and applies it to the selected target UVs. Center loops and pairs inside the same island are skipped.

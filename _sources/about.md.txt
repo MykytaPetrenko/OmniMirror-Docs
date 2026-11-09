@@ -20,7 +20,7 @@ Once the configuration is saved, you can use it to symmetrize:
 - Shape keys
 - Vertex groups
 - UV maps
-- Seams and sharp edges
+- Seams, sharp marks, crease values, bevel weights, and Freestyle marks
 - Pose bones
 
 Mesh-based operations are based on the original symmetry, not on the messy positions vertices may have drifted to later. Pose symmetry uses Blender left/right bone naming and does not require a mesh config.
@@ -28,6 +28,6 @@ Mesh-based operations are based on the original symmetry, not on the messy posit
 ## Limitations
 
 - OmniMirror relies on vertex order, so you cannot change topology after creating the configuration.
-- The configuration should be created on a genuinely symmetrical mesh.
+- Coordinate Based needs matching positions across the axis. Topology Based can work on an asymmetric shape when the two sides have enough matching connectivity.
 - The add-on is actively developed, so limitations may change.
 

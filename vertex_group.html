@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Vertex Group Symmetrization &mdash; OmniMirror 1.0.0 documentation</title>
+        <title>Vertex Group Symmetrization &mdash; OmniMirror 1.2.0 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=ea6a6c20" />
@@ -14,7 +14,7 @@
             <link rel="author" title="About these documents" href="about.html" />
             <link rel="index" title="Index" href="genindex.html" />
             <link rel="search" title="Search" href="search.html" />
-            <link rel="top" title="OmniMirror 1.0.0 documentation" href="#" />
+            <link rel="top" title="OmniMirror 1.2.0 documentation" href="#" />
             <link rel="next" title="Shape Key Symmetrization" href="shape_key_symmetrization.html" />
             <link rel="prev" title="Basis Mesh Symmetrization" href="basis_mesh.html" />
     </head>
@@ -163,11 +163,25 @@
 <h2>Symmetrize Single<a class="headerlink" href="#symmetrize-single" title="Link to this heading">¶</a></h2>
 <p>Click <strong>Symmetrize Single</strong> to process only the active vertex group or a pair of vertex groups where one of them is active.</p>
 <p>This is the best option when checking the selected <strong>Type</strong>, <strong>Single Flow</strong>, or <strong>Pair Flow</strong> settings before processing a larger set.</p>
+<section id="mirror-between-paired-groups">
+<h3>Mirror between paired groups<a class="headerlink" href="#mirror-between-paired-groups" title="Link to this heading">¶</a></h3>
+<p>With <code class="docutils literal notranslate"><span class="pre">ear_l</span></code> active, set <strong>Type</strong> to <strong>Pair</strong> and <strong>Pair Flow</strong> to <strong>Left → Right</strong>. Click <strong>Symmetrize Single</strong>, then select <code class="docutils literal notranslate"><span class="pre">ear_r</span></code> to inspect the result.</p>
+<p><img alt="The Vertex Groups panel set to Pair and Left to Right." src="_images/weights-pair-controls.webp" /></p>
+<p><img alt="Weights transfer to the opposite ear, with close-ups of interpolation around its cut and hole." src="_images/weights-omnimirror-pair-web.gif" /></p>
+<p>On this mesh, Blender’s built-in mirror operations leave some or all of the weights on the source ear. The result depends on the mesh and the matching method.</p>
+<p><img alt="The original ear weights and results from Blender’s position and topology mirror operations." src="_images/weights-blender-mirror-web.gif" /></p>
+</section>
+<section id="symmetrize-within-a-single-group">
+<h3>Symmetrize within a single group<a class="headerlink" href="#symmetrize-within-a-single-group" title="Link to this heading">¶</a></h3>
+<p>For a group such as <code class="docutils literal notranslate"><span class="pre">forehead</span></code>, use <strong>Single</strong>. Here, <strong>Single Flow</strong> is set to <strong>−X → +X</strong> to copy the painted side within the same group.</p>
+<p><img alt="Before and after copying the forehead weights within one vertex group." src="_images/weights-forehead-single.webp" /></p>
+</section>
 </section>
 <section id="batch-processing">
 <h2>Batch Processing<a class="headerlink" href="#batch-processing" title="Link to this heading">¶</a></h2>
 <p>Click <strong>Symmetrize All</strong> to process every vertex group on the active mesh.</p>
 <p>If you enable <strong>Advanced Batch Options</strong>, the button changes to <strong>Symmetrize Custom Batch</strong>. The checklist lets you choose exactly which vertex groups should be processed. Use <strong>Refresh</strong> to rebuild the list, <strong>Check All</strong> to select every item, and <strong>Uncheck All</strong> to clear the selection.</p>
+<p><img alt="The Vertex Groups batch checklist includes both ear_l and forehead in Auto mode." src="_images/batch-vertex-groups.webp" /></p>
 <p>During processing, OmniMirror shows progress and allows the operation to be cancelled.</p>
 </section>
 </section>
@@ -190,7 +204,11 @@
 <li><a class="reference internal" href="#">Vertex Group Symmetrization</a><ul>
 <li><a class="reference internal" href="#where-to-find-it">Where to Find It</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#symmetrize-single">Symmetrize Single</a></li>
+<li><a class="reference internal" href="#symmetrize-single">Symmetrize Single</a><ul>
+<li><a class="reference internal" href="#mirror-between-paired-groups">Mirror between paired groups</a></li>
+<li><a class="reference internal" href="#symmetrize-within-a-single-group">Symmetrize within a single group</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#batch-processing">Batch Processing</a></li>
 </ul>
 </li>
@@ -252,7 +270,7 @@
     </div>
         </div>
     </footer>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/documentation_options.js?v=6efca38a"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script type="text/javascript" src="_static/dist/theme.js"></script>
