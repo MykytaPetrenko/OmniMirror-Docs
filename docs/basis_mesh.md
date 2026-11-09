@@ -12,7 +12,8 @@ In Blender, open the 3D View sidebar and go to:
 
 The section contains:
 
-- **Mode**
+- **Flow**
+- **Recompute Shape Keys**
 - **Save Original as Shape Key**
 - **Symmetrize**
 
@@ -25,6 +26,8 @@ The **Flow** parameter controls how paired vertices are processed.
 - `-X -> +X` copies vertex coordinates from the negative X side of the config to the positive X side. The axis letter changes to match the config's **Symmetry Axis**.
 - `+X -> -X` copies vertex coordinates from the positive X side of the config to the negative X side. The axis letter changes to match the config's **Symmetry Axis**.
 
+![The original goblin head and the results of Average, negative-to-positive, and positive-to-negative flow.](images/mesh-modes.webp)
+
 The directional flow is defined by the sides recorded when the config was created, not by the mesh's current visible position. Read the labels as the configured negative and positive axis sides, rather than assuming they always mean visual left and right.
 
 ```eval_rst
@@ -36,11 +39,15 @@ The directional flow is defined by the sides recorded when the config was create
     For another orientation, follow the axis labels rather than visual left and right.
 ```
 
+### Recompute Shape Keys
+
+When **Recompute Shape Keys** is enabled, existing shape keys follow the change to Basis while keeping their deformation offsets.
+
 ### Save Original as Shape Key
 
 Enable **Save Original as Shape Key** if you want to preserve the current mesh coordinates before symmetrizing.
 
-When enabled, OmniMirror creates a shape key named `BEFORE_SYMMETRIZE` before writing the new basis mesh coordinates. This is useful for comparing the result or recovering the previous shape.
+When enabled, OmniMirror stores the previous coordinates in a shape key named `BEFORE_SYMMETRIZE`. Use it to compare the shapes or recover the previous one.
 
 ## Symmetrize Process
 
@@ -53,3 +60,15 @@ OmniMirror will:
 3. Process all mirrored vertex pairs.
 4. Force center vertices onto the selected symmetry axis.
 5. Write the processed coordinates back to the basis mesh.
+
+## Symmetrize a selection
+
+In Edit Mode, select the vertices you want to use and open the **Selected** controls. **From Selected** copies their positions to their counterparts. **To Selected** copies the counterparts’ positions to the selection.
+
+**Falloff** blends the change into nearby vertices along connected edges. The distance limits how far the effect reaches, and **Falloff Shape** sets the blend curve. A distance of zero disables it.
+
+![Before and after copying the selected ear shape to its opposite side.](images/mesh-selection.webp)
+
+With **Use Laplacian** enabled in the config panel, unassigned vertices around a local asymmetry can follow the surrounding geometry. The ear’s hole and cut keep their topology as they move with the ear.
+
+![Close-up of the hole and cut before and after the ear changes shape.](images/mesh-ear-laplacian.webp)

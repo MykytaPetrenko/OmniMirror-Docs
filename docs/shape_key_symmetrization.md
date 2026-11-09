@@ -19,7 +19,7 @@ In Blender, open the 3D View sidebar and go to:
 2. **Type** controls how shape keys are matched before processing.
     - **`Single`** treats each shape key as a standalone, central shape key. It symmetrizes the shape key within itself.
     - **`Pair`** expects a left/right shape key pair. OmniMirror tries to find the matching counterpart by using Blender-style side names, such as `.L` and `.R`, `_L` and `_R`, or `Left` and `Right`.
-    - **`Auto`** tries to use paired processing when a matching left/right counterpart exists. If no counterpart is found, it falls back to single shape key processing. `Auto` is a good default for batch processing mixed shape key lists.
+    - **`Auto`** uses paired processing for side-named keys and single-key processing for the rest. A directional **Pair Flow** can create a missing counterpart when you start from the named source side.
 
 3. **Single Flow** (similar to **Flow** in **Basis Mesh**) is used when a shape key is processed as a single shape key. The axis labels come from the saved symmetry config.
     - `Average` averages the mirrored deltas or coordinates between both sides.
@@ -37,8 +37,22 @@ In Blender, open the 3D View sidebar and go to:
 
 Click **Symmetrize Active** to process only the currently active shape key or a pair of shape keys where one of them is active.
 
+### Mirror to a paired key
+
+With `ear_l` active, set **Type** to **Pair** and **Pair Flow** to **Left → Right**. **Symmetrize Active** creates `ear_r` if it is missing and copies the mirrored deformation into it.
+
+![The ear_l shape key and the ear_r counterpart created by Symmetrize Active.](images/shape-keys-pair-web.gif)
+
+### Symmetrize a key within itself
+
+Use **Single** for a central shape key such as an asymmetric smile. The example starts from the same original shape for each **Single Flow** setting.
+
+![An asymmetric smile processed with Average and both directional flows.](images/shape-keys-center-web.gif)
+
 ## Batch Processing
 
 Click **Symmetrize All** to process every shape key except the Basis shape key.
 
 If you enable **Advanced Batch Options**, the button changes to **Symmetrize Custom Batch**. The checklist lets you choose exactly which shape keys should be processed. Use **Refresh** to rebuild the list, **Check All** to select every item, and **Uncheck All** to clear the selection.
+
+![The Shape Keys checklist with two smile keys checked and both custom batch buttons visible.](images/batch-shape-keys.webp)

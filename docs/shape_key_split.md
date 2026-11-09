@@ -45,6 +45,10 @@ In Blender, open the 3D View sidebar and go to:
 
 Click **Split Active** to split only the currently active shape key.
 
+With **Remove Original** off, the original stays beside the two new keys. In this example, setting both new keys to 1 reproduces the original smile while the source key is at 0.
+
+![Split Active creates left and right smile keys and shows how their combined deformation matches the original.](images/shape-keys-split-web.gif)
+
 After splitting, use Blender's **Adjust Last Operation** popup in the lower-left corner of the 3D View to adjust the operator settings in real time. This is useful for testing the suffix, side mapping, preview side, or falloff before processing a larger batch.
 
 ## Batch Processing
@@ -52,3 +56,5 @@ After splitting, use Blender's **Adjust Last Operation** popup in the lower-left
 Click **Split All** to process every shape key except the Basis shape key.
 
 If you enable **Advanced Batch Options**, the button changes to **Split Custom Batch**. The checklist lets you choose exactly which shape keys should be processed. Use **Refresh** to rebuild the list, **Check All** to select every item, and **Uncheck All** to clear the selection.
+
+The checklist is shared with [Shape Key Symmetrization](shape_key_symmetrization.md).
