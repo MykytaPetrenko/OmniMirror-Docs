@@ -8,6 +8,7 @@ Welcome to OmniMirror Docs!
    :caption: Contents:
 
    about.md
+   install.md
    workflow.md
    config.md
    basis_mesh.md
